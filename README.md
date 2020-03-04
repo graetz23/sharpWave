@@ -1,2 +1,2 @@
 # SharpWave
-A port of [https://github.com/cscheiblich/JWave](JWave) to C#
+A port of [JWave](https://github.com/cscheiblich/JWave) to C#
