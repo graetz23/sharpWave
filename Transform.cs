@@ -40,9 +40,9 @@ namespace SharpWave
     public Transform( BasicTransform basicTransform )
     {
       if(basicTransform == null )
-        throw new NotExistent( "Given transform oject is null!" );
+        throw new Types.Types_NotExistent( "Given transform object is null!" );
       if(!(basicTransform is BasicTransform))
-        throw new NotExistent( "Given transform oject is not correct type!" );
+        throw new Types.Types_NotValid( "Given transform object is not correct type!" );
       _basicTransform = basicTransform;
     } // method
 
@@ -54,7 +54,7 @@ namespace SharpWave
 
     public double[ ] reverse( double[ ] arrHilb ) {
       double[ ] arrTime = null;
-      arrTime = _basicTransform.reverse( arrHilb )
+      arrTime = _basicTransform.reverse( arrHilb );
       return arrTime;
     } // reverse
 
