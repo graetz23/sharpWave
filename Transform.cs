@@ -1,6 +1,6 @@
 ///
 /// SharpWave - a pragmatic port of JWave
-/// https://github.com/cscheiblich/JWave
+/// https://github.com/graetz23/JWave
 ///
 /// MIT License
 ///
@@ -30,7 +30,7 @@ namespace SharpWave
 {
 
   /// <summary>
-  /// SharpWave.
+  /// Basic class for transforms.
   /// </summary>
   public class Transform
   {
