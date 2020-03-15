@@ -24,6 +24,7 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 /// SOFTWARE.
 ///
+using System;
 
 namespace SharpWave
 {
@@ -51,19 +52,22 @@ public abstract class WaveletTransform : BasicTransform {
    * @param wavelet
    *          object of type Wavelet
    */
-  protected WaveletTransform( Wavelet wavelet ) : base( ) {
+  protected WaveletTransform( String name, Wavelet wavelet ) : base( name ) {
+    if( wavelet == null )
+      throw new Types.Types_NotExistent( "WaveletTransform - " +
+        "given Wavelet object is null!" );
+    if( !(wavelet is Wavelet) )
+      throw new Types.Types_NotPossible( "WaveletTransform - " +
+        "given object is not of type Wavelet!" );
     _wavelet = wavelet;
   } // check for objects od type Wavelet
 
   /*
    * Returns the stored Wavelet object.
    * @author Christian (graetz23@gmail.com)
-   * @date 14.03.2015 18:27:05 (non-Javadoc)
-   * @see jwave.transforms.BasicTransform#getWavelet()
+   * @date 14.03.2015 18:27:05
    */
-  public Wavelet getWavelet( ) {
-    return _wavelet;
-  } // getWavelet
+  public Wavelet WAVELET { get { return _wavelet; } } // method
 
   /**
    * Performs a 1-D forward transform from time domain to Hilbert domain using

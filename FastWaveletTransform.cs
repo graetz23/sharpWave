@@ -44,8 +44,8 @@ public class FastWaveletTransform : WaveletTransform {
    * @param wavelet
    *          object of type Wavelet
    */
-  public FastWaveletTransform( Wavelet wavelet ) : base( wavelet ) {
-    _name = "Fast Wavelet Transform"; // identifier of transform; keep constant
+  public FastWaveletTransform( Wavelet wavelet ) :
+    base( "Fast Wavelet Transform", wavelet ) {
   } // FastWaveletTransform
 
   /**
@@ -58,29 +58,24 @@ public class FastWaveletTransform : WaveletTransform {
    *
    * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 11:58:37
-   * @throws JWaveException
-   *           if given array is not of length 2^p | pEN or given level does not
-   *           match the supported domain (array)
-   * @see jwave.transforms.BasicTransform#forward(double[], int)
    */
    override public double[ ] forward( double[ ] arrTime, int level ) {
 
     if( !isBinary( arrTime.Length ) )
       throw new Types.Data_NotValid(
-          "FastWaveletTransform#forward - "
-              + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+        "FastWaveletTransform#forward - "
+      + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
+      + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     int noOfLevels = calcExponent( arrTime.Length );
     if( level < 0 || level > noOfLevels )
       throw new Types.Data_NotValid( "FastWaveletTransform#forward - "
-          + "given level is out of range for given array" );
+      + "given level is out of range for given array" );
 
-    // Arrays.copyOf( arrTime, arrTime.length );
     double[ ] arrHilb = new double[ arrTime.Length ];
-    for( int i = 0; i < arrTime.Length; i++ )
+    for( int i = 0; i < arrTime.Length; i++ ) {
       arrHilb[ i ] = arrTime[ i ];
-
+    } // loop
 
     int l = 0;
     int h = arrHilb.Length;
@@ -89,7 +84,6 @@ public class FastWaveletTransform : WaveletTransform {
 
       double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
 
-      // System.arraycopy( arrTempPart, 0, arrHilb, 0, h );
       for( int i = 0; i < h; i++ ) {
         arrHilb[ i ] = arrTempPart[ i ];
       } // loop
@@ -114,30 +108,26 @@ public class FastWaveletTransform : WaveletTransform {
    *
    * @author Christian (graetz23@gmail.com)
    * @date 22.03.2015 12:00:10
-   * @throws JWaveException
-   *           if given array is not of length 2^p | pEN or given level does not
-   *           match the supported domain (array)
-   * @see jwave.transforms.BasicTransform#reverse(double[], int)
    */
   override public double[ ] reverse( double[ ] arrHilb, int level )
   {
 
     if( !isBinary( arrHilb.Length ) )
       throw new Types.Data_NotValid(
-          "FastWaveletTransform#reverse - "
-              + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+        "FastWaveletTransform#reverse - "
+      + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
+      + "please use the Ancient Egyptian Decomposition for any other array length!" );
 
     int noOfLevels = calcExponent( arrHilb.Length );
     if( level < 0 || level > noOfLevels )
       throw new Types.Data_NotValid( "FastWaveletTransform#reverse - "
-          + "given level is out of range for given array" );
+      + "given level is out of range for given array" );
 
     int length = arrHilb.Length; // length of first Hilbert space
-    // double[ ] arrTime = Arrays.copyOf( arrHilb, length );
     double[ ] arrTime = new double[ arrHilb.Length ];
-    for( int i = 0; i < arrHilb.Length; i++ )
+    for( int i = 0; i < arrHilb.Length; i++ ) {
       arrTime[ i ] = arrHilb[ i ];
+    } // loop
 
     int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
     int h = transformWavelength;
@@ -150,7 +140,6 @@ public class FastWaveletTransform : WaveletTransform {
 
       double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
 
-      // System.arraycopy( arrTempPart, 0, arrTime, 0, h );
       for( int i = 0; i < h; i++ ) {
         arrTime[ i ] = arrTempPart[ i ];
       } // loop

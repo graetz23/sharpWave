@@ -51,8 +51,8 @@ public abstract class BasicTransform {
    * @author Christian (graetz23@gmail.com)
    * @date 19.02.2014 18:38:21
    */
-  public BasicTransform( ) {
-    _name = null;
+  public BasicTransform( String name ) {
+    _name = name;
   } // BasicTransform
 
   /**
@@ -62,12 +62,10 @@ public abstract class BasicTransform {
    * @date 14.03.2015 18:13:34
    * @return identifier as String
    */
-  public String getName( ) {
-    return _name;
-  } // getName
+  public String NAME { get { return _name; } } // method
 
   /**
-   * Returns the stored Wavelet object or null pointer.
+   * Returns the stored Wavelet object or throws an exception.
    *
    * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:26:44
@@ -75,7 +73,8 @@ public abstract class BasicTransform {
    */
   public virtual Wavelet getWavelet( ) {
     throw new Types.Types_NotAvailable(
-        "BasicTransform#getWavelet - not available" );
+        "BasicTransform.getWavelet - " +
+        "not available while this is not necessarily a wavelet transform!" );
   } // getWavelet
 
   /**
