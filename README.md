@@ -15,8 +15,25 @@ available. Then try:
 
 ### remarks
 Currently only a minimal function test is available:
-- only 1-D orthogonal transform functions,
-- only the Fast Wavelet Transform algorithms,
-- only the orthonormal Haar Wavelet.
+- 1-D, 2-D, and 3-D orthogonal transform algorithms,
+- the Fast Wavelet Transform algorithms,
+- the orthonormal Haar Wavelet.
 
 *have fun :-)*
+
+## ChangeLog
+
+### 20200315
+- decided to use _C#'s multidimensional_ instead of _jagged_ arrays,
+- added 2-D forward and reverse (stepping) algorithms,
+- added 3-D forward and reverse (stepping) algorithms,
+- extended the main method by 2-D example.
+
+### 20200314
+- added 1-D orthogonal transform functions,
+- added the Fast Wavelet Transform algorithms,
+- added the orthonormal Haar Wavelet.
+
+### 20200304
+- started the ported,
+- ported all necessary classes for a minimal example.
