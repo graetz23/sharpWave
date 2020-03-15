@@ -30,6 +30,7 @@ The following functionality is available by this _port_:
 - added 2-D forward and reverse (stepping) algorithms,
 - added 3-D forward and reverse (stepping) algorithms,
 - extended the main method by 2-D example,
+- recycled comments towards MSVS XML style,
 - cleaned code.
 
 ### 20200314

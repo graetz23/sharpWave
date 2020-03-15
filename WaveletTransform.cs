@@ -28,163 +28,147 @@ using System;
 
 namespace SharpWave
 {
-/**
- * @author Christian (graetz23@gmail.com)
- * @date 15.02.2014 21:05:33
- */
-public abstract class WaveletTransform : BasicTransform {
 
-  /**
-   * The used wavelet for transforming
-   *
-   * @author Christian (graetz23@gmail.com)
-   * @date 15.02.2014 21:05:33
-   */
-  protected Wavelet _wavelet;
+  ///<summary>Base class for Wavelet Transforms.</summary>
+  ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 21:05:33</remarks>
+  public abstract class WaveletTransform : BasicTransform {
 
-  /**
-   * Constructor checks whether the given object is all right.// namespace SharpWave
-// {
+    ///<summary>
+    /// The used Eavelet object presenting 1-D forward and reverse transform.
+    ///</summary>
+    ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 21:05:33</remarks>
+    protected Wavelet _wavelet;
 
-   *
-   * @author Christian (graetz23@gmail.com)
-   * @date 15.02.2014 21:05:33
-   * @param wavelet
-   *          object of type Wavelet
-   */
-  protected WaveletTransform( String name, Wavelet wavelet ) : base( name ) {
-    if( wavelet == null )
-      throw new Types.Types_NotExistent( "WaveletTransform - " +
-        "given Wavelet object is null!" );
-    if( !(wavelet is Wavelet) )
-      throw new Types.Types_NotPossible( "WaveletTransform - " +
-        "given object is not of type Wavelet!" );
-    _wavelet = wavelet;
-  } // check for objects od type Wavelet
+     ///<summary>
+     /// Constructor checks whether the given Wavelet object is all right.
+     ///</summary>
+     ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 21:05:33</remarks>
+    protected WaveletTransform( String name, Wavelet wavelet ) : base( name ) {
+      if( wavelet == null )
+        throw new Types.Types_NotExistent( "WaveletTransform - " +
+          "given Wavelet object is null!" );
+      if( !(wavelet is Wavelet) )
+        throw new Types.Types_NotPossible( "WaveletTransform - " +
+          "given object is not of type Wavelet!" );
+      _wavelet = wavelet;
+    } // method
 
-  /*
-   * Returns the stored Wavelet object.
-   * @author Christian (graetz23@gmail.com)
-   * @date 14.03.2015 18:27:05
-   */
-  public Wavelet WAVELET { get { return _wavelet; } } // method
+    ///<summary>Getter that returns the stored Wavelet object.</summary>
+    ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 18:27:05</remarks>
+    ///<returns>Returns the stored Wavelet object.</returns>
+    public Wavelet WAVELET { get { return _wavelet; } } // method
 
-  /**
-   * Performs a 1-D forward transform from time domain to Hilbert domain using
-   * one kind of wavelet transform algorithm for a given array of dimension
-   * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
-   *
-   * @date 10.02.2010 08:23:24
-   * @author Christian (graetz23@gmail.com)
-   * @throws JWaveException
-   *           if given array is not of length 2^p | pEN
-   * @see jwave.transforms.BasicTransform#forward(double[])
-   */
-  override public double[ ] forward( double[ ] arrTime ) {
+    /**
+     *
+     *
+     * @date
+     * @author Christian (graetz23@gmail.com)
+     * @throws JWaveException
+     *           if given array is not of length 2^p | pEN
+     * @see jwave.transforms.BasicTransform#forward(double[])
+     */
+     ///<summary>
+     /// Performs a 1-D forward transform from time domain to Hilbert domain
+     /// using one kind of wavelet transform algorithm for a given array of
+     // dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., so on.
+     ///</summary>
+     ///<remarks>Christian (graetz23@gmail.com) 10.02.2010 08:23:24</remarks>
+     ///<returns>Coefficients of 1-D frequency or Hilbert space.</returns>
+    override public double[ ] forward( double[ ] arrTime ) {
+      if( !isBinary( arrTime.Length ) )
+        throw new Types.Data_NotValid( "WaveletTransform.forward - " +
+          "array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. " +
+          "use the Ancient Egyptian Decomposition for odd array length!" );
+      int maxLevel = calcExponent( arrTime.Length );
+      return forward( arrTime, maxLevel ); // forward by maximal steps
+    } // forward
 
-    if( !isBinary( arrTime.Length ) )
-      throw new Types.Data_NotValid(
-          "WaveletTransform#forward - "
-              + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
+    ///<summary>
+    /// Performs a 1-D reverse transform from Hilbert domain to time domain
+    /// using one kind of wavelet transform algorithm for a given array of
+    /// dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., so on.
+    /// </summary>
+    ///<remarks>Christian (graetz23@gmail.com) 10.02.2010 08:23:24</remarks>
+    ///<returns>
+    /// Coefficients of time series of 1-D frequency or Hilbert space.
+    ///</returns>
+    override public double[ ] reverse( double[ ] arrHilb ) {
+      if( !isBinary( arrHilb.Length ) )
+        throw new Types.Data_NotValid( "WaveletTransform#reverse - " +
+        "array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. " +
+        "use the Ancient Egyptian Decomposition for any other array length!" );
+      int maxLevel = calcExponent( arrHilb.Length );
+      return reverse( arrHilb, maxLevel ); // reverse by maximal steps
+    } // reverse
 
-    int maxLevel = calcExponent( arrTime.Length );
-    return forward( arrTime, maxLevel ); // forward by maximal steps
+    /**
+     * Performs several 1-D forward transforms from time domain to all possible
+     * Hilbert domains using one kind of wavelet transform algorithm for a given
+     * array of dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, ..,
+     * and so on. However, the algorithm stores all levels in a matrix that has in
+     * first dimension the range of 0, .., p and in second dimension the
+     * coefficients (energy & details) of a certain level. From any level a full
+     * reconstruction can be performed. The first dimension is keeping the time
+     * series, due to being the Hilbert space of level 0. All following dimensions
+     * are keeping the next higher Hilbert spaces, so the next step in wavelet
+     * filtering.
+     *
+     * @author Christian (graetz23@gmail.com)
+     * @date 22.03.2015 14:28:49
+     * @param arrTime
+     *          coefficients of time domain
+     * @return matDeComp coefficients of frequency or Hilbert domain in 2-D
+     *         spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent of M=2^p | pEN
+     * @throws JWaveException
+     *           if something does not match upon the criteria of input
+     * @see jwave.transforms.BasicTransform#decompose(double[])
+     */
+    // override public double[ ][ ] decompose( double[ ] arrTime ) {
+    //
+    //   int length = arrTime.length;
+    //   int levels = calcExponent( length );
+    //   double[ ][ ] matDeComp = new double[ levels + 1 ][ length ];
+    //   for( int p = 0; p <= levels; p++ )
+    //     System.arraycopy( forward( arrTime, p ), 0, matDeComp[ p ], 0, length );
+    //   return matDeComp;
+    //
+    // } // decompose
 
-  } // forward
+    /**
+     * Performs one 1-D reverse transform from Hilbert domain to time domain using
+     * one kind of wavelet transform algorithm for a given array of dimension
+     * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on. However,
+     * the algorithm uses on of level in a matrix that has in first dimension the
+     * range of 0, .., p and in second dimension the coefficients (energy &
+     * details) the level. From any level a full a reconstruction can be
+     * performed; so from the selected by "level". Anyway, the first dimension is
+     * keeping the time series, due to being the Hilbert space of level 0. All
+     * following dimensions are keeping the next higher Hilbert spaces, so the
+     * next step in wavelet filtering. If one want to denoise each level in the
+     * same way and compare results after reverse transform, this is the best
+     * input for it.
+     *
+     * @author Christian (graetz23@gmail.com)
+     * @date 22.03.2015 14:29:01
+     * @see jwave.transforms.BasicTransform#recompose(double[][], int)
+     * @param matDeComp
+     *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
+     *          of M=2^p | pEN
+     * @throws JWaveException
+     *           if something does not match upon the criteria of input
+     * @return a 1-D time domain signal
+     * @see jwave.transforms.BasicTransform#recompose(double[])
+     */
+    // public double[ ] recompose( double[ ][ ] matDeComp, int level ) {
+    //
+    //   if( level < 0 || level >= matDeComp.length )
+    //     throw new Types.Data_NotValid( "WaveletTransform#recompose - "
+    //         + "given level is out of range" );
+    //
+    //   return reverse( matDeComp[ level ], level );
+    //
+    // } // recompose
 
-  /**
-   * Performs a 1-D reverse transform from Hilbert domain to time domain using
-   * one kind of wavelet transform algorithm for a given array of dimension
-   * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
-   *
-   * @date 10.02.2010 08:23:24
-   * @author Christian (graetz23@gmail.com)
-   * @throws JWaveException
-   *           if given array is not of length 2^p | pEN
-   * @see jwave.transforms.BasicTransform#reverse(double[])
-   */
-  override public double[ ] reverse( double[ ] arrHilb ) {
-
-    if( !isBinary( arrHilb.Length ) )
-      throw new Types.Data_NotValid(
-          "WaveletTransform#reverse - "
-              + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-              + "please use the Ancient Egyptian Decomposition for any other array length!" );
-
-    int maxLevel = calcExponent( arrHilb.Length );
-    return reverse( arrHilb, maxLevel ); // reverse by maximal steps
-
-  } // reverse
-
-  /**
-   * Performs several 1-D forward transforms from time domain to all possible
-   * Hilbert domains using one kind of wavelet transform algorithm for a given
-   * array of dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, ..,
-   * and so on. However, the algorithm stores all levels in a matrix that has in
-   * first dimension the range of 0, .., p and in second dimension the
-   * coefficients (energy & details) of a certain level. From any level a full
-   * reconstruction can be performed. The first dimension is keeping the time
-   * series, due to being the Hilbert space of level 0. All following dimensions
-   * are keeping the next higher Hilbert spaces, so the next step in wavelet
-   * filtering.
-   *
-   * @author Christian (graetz23@gmail.com)
-   * @date 22.03.2015 14:28:49
-   * @param arrTime
-   *          coefficients of time domain
-   * @return matDeComp coefficients of frequency or Hilbert domain in 2-D
-   *         spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent of M=2^p | pEN
-   * @throws JWaveException
-   *           if something does not match upon the criteria of input
-   * @see jwave.transforms.BasicTransform#decompose(double[])
-   */
-  // override public double[ ][ ] decompose( double[ ] arrTime ) {
-  //
-  //   int length = arrTime.length;
-  //   int levels = calcExponent( length );
-  //   double[ ][ ] matDeComp = new double[ levels + 1 ][ length ];
-  //   for( int p = 0; p <= levels; p++ )
-  //     System.arraycopy( forward( arrTime, p ), 0, matDeComp[ p ], 0, length );
-  //   return matDeComp;
-  //
-  // } // decompose
-
-  /**
-   * Performs one 1-D reverse transform from Hilbert domain to time domain using
-   * one kind of wavelet transform algorithm for a given array of dimension
-   * (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on. However,
-   * the algorithm uses on of level in a matrix that has in first dimension the
-   * range of 0, .., p and in second dimension the coefficients (energy &
-   * details) the level. From any level a full a reconstruction can be
-   * performed; so from the selected by "level". Anyway, the first dimension is
-   * keeping the time series, due to being the Hilbert space of level 0. All
-   * following dimensions are keeping the next higher Hilbert spaces, so the
-   * next step in wavelet filtering. If one want to denoise each level in the
-   * same way and compare results after reverse transform, this is the best
-   * input for it.
-   *
-   * @author Christian (graetz23@gmail.com)
-   * @date 22.03.2015 14:29:01
-   * @see jwave.transforms.BasicTransform#recompose(double[][], int)
-   * @param matDeComp
-   *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
-   *          of M=2^p | pEN
-   * @throws JWaveException
-   *           if something does not match upon the criteria of input
-   * @return a 1-D time domain signal
-   * @see jwave.transforms.BasicTransform#recompose(double[])
-   */
-  // public double[ ] recompose( double[ ][ ] matDeComp, int level ) {
-  //
-  //   if( level < 0 || level >= matDeComp.length )
-  //     throw new Types.Data_NotValid( "WaveletTransform#recompose - "
-  //         + "given level is out of range" );
-  //
-  //   return reverse( matDeComp[ level ], level );
-  //
-  // } // recompose
-
-} // WaveletTransform
+  } // WaveletTransform
 
 } // namespace
