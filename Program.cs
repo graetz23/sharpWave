@@ -44,6 +44,7 @@ namespace Program
 
         Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
 
+        // 1-D example
         double[ ] arrTime = { 1, 1, 1, 1, 1, 1, 1, 1 };
         Console.Write( "time domain:    " );
         for( int i = 0; i < arrTime.Length; i++ )
@@ -60,6 +61,40 @@ namespace Program
         Console.Write( "reconstruction: " );
         for( int i = 0; i < arrReco.Length; i++ )
           Console.Write( arrReco[ i ] + " " );
+        Console.WriteLine( );
+
+        // 2-D example
+        double[ , ] matTime = { { 1, 1, 1, 1 },
+                                 { 1, 1, 1, 1 },
+                                 { 1, 1, 1, 1 },
+                                 { 1, 1, 1, 1 } };
+        Console.WriteLine( "time domain:    " );
+        for( int i = 0; i < matTime.GetUpperBound( 0 ) + 1; i++ ) {
+          for( int j = 0; j < matTime.GetUpperBound( 1 ) + 1; j++ ) {
+            Console.Write( matTime[ i, j ] + " " );
+          } // loop
+          Console.WriteLine( );
+        } // loop
+        Console.WriteLine( );
+
+        double[ , ] matHilb = t.forward( matTime ); // 2-D FWT Haar forward
+        Console.WriteLine( "hilbert domain: " );
+        for( int i = 0; i < matHilb.GetUpperBound( 0 ) + 1; i++ ) {
+          for( int j = 0; j < matHilb.GetUpperBound( 1 ) + 1; j++ ) {
+            Console.Write( matHilb[ i, j ] + " " );
+          } // loop
+          Console.WriteLine( );
+        } // loop
+        Console.WriteLine( );
+
+        double[ , ] matReco = t.reverse( matHilb ); // 1-D FWT Haar reverse
+        Console.WriteLine( "reconstruction: " );
+        for( int i = 0; i < matReco.GetUpperBound( 0 ) + 1; i++ ) {
+          for( int j = 0; j < matReco.GetUpperBound( 1 ) + 1; j++ ) {
+            Console.Write( matReco[ i, j ] + " " );
+          } // loop
+          Console.WriteLine( );
+        } // loop
         Console.WriteLine( );
 
       } catch(Exception e) {

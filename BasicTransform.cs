@@ -72,8 +72,6 @@ public abstract class BasicTransform {
    * @author Christian (graetz23@gmail.com)
    * @date 14.03.2015 18:26:44
    * @return object of type Wavelet of null pointer
-   * @throws JWaveFailure
-   *           if Wavelet object is not available
    */
   public virtual Wavelet getWavelet( ) {
     throw new Types.Types_NotAvailable(
@@ -90,7 +88,6 @@ public abstract class BasicTransform {
    * @param arrTime
    *          coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert space
-   * @throws JWaveException
    */
   public abstract double[ ] forward( double[ ] arrTime );
 
@@ -104,7 +101,6 @@ public abstract class BasicTransform {
    * @param arrFreq
    *          coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of time series of 1-D frequency or Hilbert space
-   * @throws JWaveException
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
 
@@ -118,9 +114,6 @@ public abstract class BasicTransform {
    * @param level
    *          the level of Hilbert space; energy & detail coefficients
    * @return array keeping Hilbert space of requested level
-   * @throws JWaveException
-   *           if given array is not of type 2^p | p E N or given level does not
-   *           match the possibilities of given array.
    */
   public virtual double[ ] forward( double[ ] arrTime, int level ) {
     throw new Types.Types_NotImplemented( "BasicTransform#forward - "
@@ -137,9 +130,6 @@ public abstract class BasicTransform {
    * @param level
    *          the level of Hilbert space; energy & detail coefficients
    * @return array keeping Hilbert space of requested level
-   * @throws JWaveException
-   *           if given array is not of type 2^p | p E N or given level does not
-   *           match the possibilities of given array.
    */
   public virtual double[ ] reverse( double[ ] arrFreq, int level ) {
     throw new Types.Types_NotAvailable( "BasicTransform#reverse - "
@@ -155,12 +145,11 @@ public abstract class BasicTransform {
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. N ] where p is the exponent
    *          of N=2^p
    * @return a 1-D time domain signal
-   * @throws JWaveException
    */
-  // public virtual double[ ][ ] decompose( double[ ] arrTime ) {
-  //   throw new Types.Types_NotAvailable( "BasicTransform#decompose - "
-  //       + "method is not implemented for this transform type!" );
-  // } // decompose
+  public virtual double[ ][ ] decompose( double[ ] arrTime ) {
+    throw new Types.Types_NotAvailable( "BasicTransform#decompose - "
+        + "method is not implemented for this transform type!" );
+  } // decompose
 
   /**
    * Generates from a 1-D signal a 2-D output, where the second dimension are
@@ -177,24 +166,15 @@ public abstract class BasicTransform {
    * @param matDeComp
    *          2-D Hilbert spaces: [ 0 .. p ][ 0 .. M ] where p is the exponent
    *          of M=2^p | pEN
-   * @return a 1-D time domain signal
    */
-  // public virtual double[ ] recompose( double[ ][ ] matDeComp ) {
-  //
-  //   // Each level of the matrix is having the full set (full energy + details)
-  //   // of decomposition. Therefore, each level can be used to do a full reconstruction,
-  //   int level = matDeComp.Length - 1; // selected highest level in general.
-  //   double[ ] arrTime = null;
-  //   try {
-  //     arrTime = recompose( matDeComp, level );
-  //   } catch( System.Exception e ) {
-  //     e.showMessage( );
-  //     e.printStackTrace( );
-  //   } // try
-  //
-  //   return arrTime;
-  //
-  // } // recompose
+  public virtual double[ ] recompose( double[ ][ ] matDeComp ) {
+    // Each level of the matrix is having the full set (full energy + details)
+    // of decomposition. Therefore, each level can be used to do a full reconstruction,
+    int level = matDeComp.Length - 1; // selected highest level in general.
+    double[ ] arrTime = null;
+    arrTime = recompose( matDeComp, level );
+    return arrTime;
+  } // recompose
 
   /**
    * Generates from a 1-D signal a 2-D output, where the second dimension are
@@ -213,21 +193,12 @@ public abstract class BasicTransform {
    * @param level
    *          the level that should be used for reconstruction
    * @return the reconstructed time series of a selected level
-   * @throws JWaveException
    */
-  // public virtual double[ ] recompose( double[ ][ ] matDeComp, int level ) {
-  //
-  //   double[ ] arrTime = null;
-  //   try {
-  //     arrTime = recompose( matDeComp, level );
-  //   } catch( System.Exception e ) {
-  //     e.showMessage( );
-  //     e.printStackTrace( );
-  //   } // try
-  //
-  //   return arrTime;
-  //
-  // } // recompose
+  public virtual double[ ] recompose( double[ ][ ] matDeComp, int level ) {
+    double[ ] arrTime = null;
+    arrTime = recompose( matDeComp, level );
+    return arrTime;
+  } // recompose
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
@@ -317,16 +288,12 @@ public abstract class BasicTransform {
    * @date 22.03.2015 12:47:01
    * @param matTime
    * @return
-   * @throws JWaveException
-   *           if matrix id not of matching dimension like 2^p | pEN
    */
-  // public double[ ][ ] forward( double[ ][ ] matTime ) {
-  //
-  //   int maxM = MathToolKit.getExponent( matTime.length );
-  //   int maxN = MathToolKit.getExponent( matTime[ 0 ].length );
-  //   return forward( matTime, maxM, maxN );
-  //
-  // } // forward
+  public double[ , ] forward( double[ , ] matTime ) {
+    int maxM = calcExponent( matTime.GetUpperBound( 0 ) + 1 ); // no of rows
+    int maxN = calcExponent( matTime.GetUpperBound( 1 ) + 1 ); // no of cols
+    return forward( matTime, maxM, maxN );
+  } // forward
 
   /**
    * Performs the 2-D forward transform from time domain to frequency or Hilbert
@@ -343,47 +310,53 @@ public abstract class BasicTransform {
    * @param lvlN
    *          level to stop in dimension N of the matrix
    * @return coefficients of 2-D frequency or Hilbert domain
-   * @throws JWaveException
    */
-  // public double[ ][ ] forward( double[ ][ ] matTime, int lvlM, int lvlN )
-  //     throws JWaveException {
-  //
-  //   int noOfRows = matTime.length;
-  //   int noOfCols = matTime[ 0 ].length;
-  //
-  //   double[ ][ ] matHilb = new double[ noOfRows ][ noOfCols ];
-  //
-  //   for( int i = 0; i < noOfRows; i++ ) {
-  //
-  //     double[ ] arrTime = new double[ noOfCols ];
-  //
-  //     for( int j = 0; j < noOfCols; j++ )
-  //       arrTime[ j ] = matTime[ i ][ j ];
-  //
-  //     double[ ] arrHilb = forward( arrTime, lvlN );
-  //
-  //     for( int j = 0; j < noOfCols; j++ )
-  //       matHilb[ i ][ j ] = arrHilb[ j ];
-  //
-  //   } // rows
-  //
-  //   for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //     double[ ] arrTime = new double[ noOfRows ];
-  //
-  //     for( int i = 0; i < noOfRows; i++ )
-  //       arrTime[ i ] = matHilb[ i ][ j ];
-  //
-  //     double[ ] arrHilb = forward( arrTime, lvlM );
-  //
-  //     for( int i = 0; i < noOfRows; i++ )
-  //       matHilb[ i ][ j ] = arrHilb[ i ];
-  //
-  //   } // cols
-  //
-  //   return matHilb;
-  //
-  // } // forward
+  public double[ , ] forward( double[ , ] matTime, int lvlM, int lvlN ) {
+
+    int noOfRows = matTime.GetUpperBound( 0 ) + 1; // number of rows
+    int noOfCols = matTime.GetUpperBound( 1 ) + 1; // number of cols
+
+    double[ , ] matHilb = new double[ noOfRows , noOfCols ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ] arrTime = new double[ noOfCols ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+        double val = matTime[ i , j ];
+        arrTime[ j ] = val;
+      } // loop
+
+      double[ ] arrHilb = forward( arrTime, lvlN );
+
+      for( int j = 0; j < noOfCols; j++ ) {
+        double val = arrHilb[ j ];
+        matHilb[ i , j ] = val;
+      } // loop
+
+    } // rows
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      double[ ] arrTime = new double[ noOfRows ];
+
+      for( int i = 0; i < noOfRows; i++ ) {
+        double val = matHilb[ i , j ];
+        arrTime[ i ] = val;
+      } // loop
+
+      double[ ] arrHilb = forward( arrTime, lvlM );
+
+      for( int i = 0; i < noOfRows; i++ ) {
+        double val = arrHilb[ i ];
+        matHilb[ i , j ] = val;
+      } // loop
+
+    } // cols
+
+    return matHilb;
+
+  } // forward
 
   /**
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
@@ -394,15 +367,12 @@ public abstract class BasicTransform {
    * @date 10.02.2010 11:01:38
    * @param matFreq
    * @return
-   * @throws JWaveException
    */
-  // public double[ ][ ] reverse( double[ ][ ] matFreq ) throws JWaveException {
-  //
-  //   int maxM = MathToolKit.getExponent( matFreq.length );
-  //   int maxN = MathToolKit.getExponent( matFreq[ 0 ].length );
-  //   return reverse( matFreq, maxM, maxN );
-  //
-  // } // reverse
+  public double[ , ] reverse( double[ , ] matFreq ) {
+    int maxM = calcExponent( matFreq.GetUpperBound( 0 ) + 1 ); // no of rows
+    int maxN = calcExponent( matFreq.GetUpperBound( 1 ) + 1 ); // no of cols
+    return reverse( matFreq, maxM, maxN );
+  } // reverse
 
   /**
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
@@ -418,47 +388,53 @@ public abstract class BasicTransform {
    * @param lvlN
    *          level to start reconstruction for dimension N of the matrix
    * @return coefficients of 2-D time domain
-   * @throws JWaveException
    */
-  // public double[ ][ ] reverse( double[ ][ ] matFreq, int lvlM, int lvlN )
-  //     throws JWaveException {
-  //
-  //   int noOfRows = matFreq.length;
-  //   int noOfCols = matFreq[ 0 ].length;
-  //
-  //   double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
-  //
-  //   for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //     double[ ] arrFreq = new double[ noOfRows ];
-  //
-  //     for( int i = 0; i < noOfRows; i++ )
-  //       arrFreq[ i ] = matFreq[ i ][ j ];
-  //
-  //     double[ ] arrTime = reverse( arrFreq, lvlM ); // AED
-  //
-  //     for( int i = 0; i < noOfRows; i++ )
-  //       matTime[ i ][ j ] = arrTime[ i ];
-  //
-  //   } // cols
-  //
-  //   for( int i = 0; i < noOfRows; i++ ) {
-  //
-  //     double[ ] arrFreq = new double[ noOfCols ];
-  //
-  //     for( int j = 0; j < noOfCols; j++ )
-  //       arrFreq[ j ] = matTime[ i ][ j ];
-  //
-  //     double[ ] arrTime = reverse( arrFreq, lvlN ); // AED
-  //
-  //     for( int j = 0; j < noOfCols; j++ )
-  //       matTime[ i ][ j ] = arrTime[ j ];
-  //
-  //   } // rows
-  //
-  //   return matTime;
-  //
-  // } // reverse
+  public double[ , ] reverse( double[ , ] matFreq, int lvlM, int lvlN ) {
+
+    int noOfRows = matFreq.GetUpperBound( 0 ) + 1; // no of rows
+    int noOfCols = matFreq.GetUpperBound( 1 ) + 1; // no of cols
+
+    double[ , ] matTime = new double[ noOfRows , noOfCols ];
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      double[ ] arrFreq = new double[ noOfRows ];
+
+      for( int i = 0; i < noOfRows; i++ ) {
+         double val = matFreq[ i , j ];
+         arrFreq[ i ] = val;
+      } // loop
+
+      double[ ] arrTime = reverse( arrFreq, lvlM ); // AED
+
+      for( int i = 0; i < noOfRows; i++ ) {
+        double val = arrTime[ i ];
+        matTime[ i , j ] = val;
+      } // loop
+
+    } // cols
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ] arrFreq = new double[ noOfCols ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+        double val = matTime[ i , j ];
+        arrFreq[ j ] = val;
+      } // loop
+
+      double[ ] arrTime = reverse( arrFreq, lvlN ); // AED
+
+      for( int j = 0; j < noOfCols; j++ ) {
+        double val = arrTime[ j ];
+        matTime[ i , j ] = val;
+      } // loop
+
+    } // rows
+
+    return matTime;
+
+  } // reverse
 
   /**
    * Performs the 3-D forward transform from time domain to frequency or Hilbert
@@ -469,17 +445,13 @@ public abstract class BasicTransform {
    * @date 10.07.2010 18:08:17
    * @param spcTime
    * @return
-   * @throws JWaveException
    */
-  // public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime )
-  //     throws JWaveException {
-  //
-  //   int maxP = MathToolKit.getExponent( spcTime.length );
-  //   int maxQ = MathToolKit.getExponent( spcTime[ 0 ].length );
-  //   int maxR = MathToolKit.getExponent( spcTime[ 0 ][ 0 ].length );
-  //   return forward( spcTime, maxP, maxQ, maxR );
-  //
-  // } // forward
+  public double[ ,, ] forward( double[ ,, ] spcTime ) {
+    int maxP = calcExponent( spcTime.GetUpperBound( 0 ) + 1 ); // no of rows
+    int maxQ = calcExponent( spcTime.GetUpperBound( 1 ) + 1 ); // no of cols
+    int maxR = calcExponent( spcTime.GetUpperBound( 2 ) + 1 ); // no of high
+    return forward( spcTime, maxP, maxQ, maxR );
+  } // forward
 
   /**
    * Performs the 3-D forward transform from time domain to frequency or Hilbert
@@ -491,66 +463,71 @@ public abstract class BasicTransform {
    * @param spcTime
    *          coefficients of 3-D time domain domain
    * @return coefficients of 3-D frequency or Hilbert domain
-   * @throws JWaveException
    */
-  // public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime, int lvlP, int lvlQ,
-  //     int lvlR ) throws JWaveException {
-  //
-  //   int noOfRows = spcTime.length; // first dimension
-  //   int noOfCols = spcTime[ 0 ].length; // second dimension
-  //   int noOfHigh = spcTime[ 0 ][ 0 ].length; // third dimension
-  //
-  //   double[ ][ ][ ] spcHilb = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
-  //
-  //   for( int i = 0; i < noOfRows; i++ ) {
-  //
-  //     double[ ][ ] matTime = new double[ noOfCols ][ noOfHigh ];
-  //
-  //     for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //       for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //         matTime[ j ][ k ] = spcTime[ i ][ j ][ k ];
-  //
-  //       } // high
-  //
-  //     } // cols
-  //
-  //     double[ ][ ] matHilb = forward( matTime, lvlP, lvlQ ); // 2-D forward
-  //
-  //     for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //       for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //         spcHilb[ i ][ j ][ k ] = matHilb[ j ][ k ];
-  //
-  //       } // high
-  //
-  //     } // cols
-  //
-  //   } // rows
-  //
-  //   for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //     for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //       double[ ] arrTime = new double[ noOfRows ];
-  //
-  //       for( int i = 0; i < noOfRows; i++ )
-  //         arrTime[ i ] = spcHilb[ i ][ j ][ k ];
-  //
-  //       double[ ] arrHilb = forward( arrTime, lvlR ); // 1-D forward
-  //
-  //       for( int i = 0; i < noOfRows; i++ )
-  //         spcHilb[ i ][ j ][ k ] = arrHilb[ i ];
-  //
-  //     } // high
-  //
-  //   } // cols
-  //
-  //   return spcHilb;
-  //
-  // } // forward
+  public double[ ,, ] forward( double[ ,, ] spcTime,
+                               int lvlP, int lvlQ, int lvlR ) {
+
+    int noOfRows = spcTime.GetUpperBound( 0 ) + 1; // no of rows
+    int noOfCols = spcTime.GetUpperBound( 1 ) + 1; // no of cols
+    int noOfHigh = spcTime.GetUpperBound( 2 ) + 1; // no of high
+
+    double[ ,, ] spcHilb = new double[ noOfRows , noOfCols , noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ , ] matTime = new double[ noOfCols , noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          double val = spcTime[ i , j , k ];
+          matTime[ j , k ] = val;
+
+        } // high
+
+      } // cols
+
+      double[ , ] matHilb = forward( matTime, lvlP, lvlQ ); // 2-D forward
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          double val = matHilb[ j , k ];
+          spcHilb[ i , j , k ] = val;
+
+        } // high
+
+      } // cols
+
+    } // rows
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      for( int k = 0; k < noOfHigh; k++ ) {
+
+        double[ ] arrTime = new double[ noOfRows ];
+
+        for( int i = 0; i < noOfRows; i++ ) {
+          double val = spcHilb[ i , j , k ];
+          arrTime[ i ] = val;
+        } // loop
+
+        double[ ] arrHilb = forward( arrTime, lvlR ); // 1-D forward
+
+        for( int i = 0; i < noOfRows; i++ ) {
+          double val = arrHilb[ i ];
+          spcHilb[ i , j , k ] = val;
+        } // loop
+
+      } // high
+
+    } // cols
+
+    return spcHilb;
+
+  } // forward
 
   /**
    * Performs the 3-D reverse transform from frequency or Hilbert domain to time
@@ -561,17 +538,13 @@ public abstract class BasicTransform {
    * @date 10.07.2010 18:09:54
    * @param spcHilb
    * @return
-   * @throws JWaveException
    */
-  // public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb )
-  //     throws JWaveException {
-  //
-  //   int maxP = MathToolKit.getExponent( spcHilb.length );
-  //   int maxQ = MathToolKit.getExponent( spcHilb[ 0 ].length );
-  //   int maxR = MathToolKit.getExponent( spcHilb[ 0 ][ 0 ].length );
-  //   return reverse( spcHilb, maxP, maxQ, maxR );
-  //
-  // } // reverse
+  public double[ ,, ] reverse( double[ ,, ] spcHilb ) {
+    int maxP = calcExponent( spcHilb.GetUpperBound( 0 ) + 1 ); // no of rows
+    int maxQ = calcExponent( spcHilb.GetUpperBound( 1 ) + 1 ); // no of cols
+    int maxR = calcExponent( spcHilb.GetUpperBound( 2 ) + 1 ); // no of high
+    return reverse( spcHilb, maxP, maxQ, maxR );
+  } // reverse
 
   /**
    * Performs the 3-D reverse transform from frequency or Hilbert domain of a
@@ -584,66 +557,71 @@ public abstract class BasicTransform {
    * @param spcHilb
    *          coefficients of 3-D frequency or Hilbert domain
    * @return coefficients of 3-D time domain
-   * @throws JWaveException
    */
-  // public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb, int lvlP, int lvlQ,
-  //     int lvlR ) throws JWaveException {
-  //
-  //   int noOfRows = spcHilb.length; // first dimension
-  //   int noOfCols = spcHilb[ 0 ].length; // second dimension
-  //   int noOfHigh = spcHilb[ 0 ][ 0 ].length; // third dimension
-  //
-  //   double[ ][ ][ ] spcTime = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
-  //
-  //   for( int i = 0; i < noOfRows; i++ ) {
-  //
-  //     double[ ][ ] matHilb = new double[ noOfCols ][ noOfHigh ];
-  //
-  //     for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //       for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //         matHilb[ j ][ k ] = spcHilb[ i ][ j ][ k ];
-  //
-  //       } // high
-  //
-  //     } // cols
-  //
-  //     double[ ][ ] matTime = reverse( matHilb, lvlP, lvlQ ); // 2-D reverse
-  //
-  //     for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //       for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //         spcTime[ i ][ j ][ k ] = matTime[ j ][ k ];
-  //
-  //       } // high
-  //
-  //     } // cols
-  //
-  //   } // rows
-  //
-  //   for( int j = 0; j < noOfCols; j++ ) {
-  //
-  //     for( int k = 0; k < noOfHigh; k++ ) {
-  //
-  //       double[ ] arrHilb = new double[ noOfRows ];
-  //
-  //       for( int i = 0; i < noOfRows; i++ )
-  //         arrHilb[ i ] = spcTime[ i ][ j ][ k ];
-  //
-  //       double[ ] arrTime = reverse( arrHilb, lvlR ); // 1-D reverse
-  //
-  //       for( int i = 0; i < noOfRows; i++ )
-  //         spcTime[ i ][ j ][ k ] = arrTime[ i ];
-  //
-  //     } // high
-  //
-  //   } // cols
-  //
-  //   return spcTime;
-  //
-  // } // reverse
+  public double[ ,, ] reverse( double[ ,, ] spcHilb,
+                               int lvlP, int lvlQ, int lvlR ) {
+
+    int noOfRows = spcHilb.GetUpperBound( 0 ) + 1; // no of rows
+    int noOfCols = spcHilb.GetUpperBound( 1 ) + 1; // no of cols
+    int noOfHigh = spcHilb.GetUpperBound( 2 ) + 1; // no of high
+
+    double[ ,, ] spcTime = new double[ noOfRows , noOfCols , noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ , ] matHilb = new double[ noOfCols , noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          double val = spcHilb[ i , j , k ];
+          matHilb[ j , k ] = val;
+
+        } // high
+
+      } // cols
+
+      double[ , ] matTime = reverse( matHilb, lvlP, lvlQ ); // 2-D reverse
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          double val = matTime[ j , k ];
+          spcTime[ i , j , k ] = val;
+
+        } // high
+
+      } // cols
+
+    } // rows
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      for( int k = 0; k < noOfHigh; k++ ) {
+
+        double[ ] arrHilb = new double[ noOfRows ];
+
+        for( int i = 0; i < noOfRows; i++ ) {
+          double val = spcTime[ i , j , k ];
+          arrHilb[ i ] = val;
+        } // loop
+
+        double[ ] arrTime = reverse( arrHilb, lvlR ); // 1-D reverse
+
+        for( int i = 0; i < noOfRows; i++ ) {
+          double val = arrTime[ i ];
+          spcTime[ i , j , k ] = val;
+        } // loop
+
+      } // high
+
+    } // cols
+
+    return spcTime;
+
+  } // reverse
 
   /**
    * Returns true if given integer is of type binary (2, 4, 8, 16, ..) else the
@@ -672,8 +650,6 @@ public abstract class BasicTransform {
    * @param number
    *          any integer that fulfills 2^p | pEN
    * @return p as number = 2^p | pEN
-   * @throws JWaveException
-   *           if given number is not a binary number
    */
   protected int calcExponent( int number ) {
     if( !isBinary( number ) )
