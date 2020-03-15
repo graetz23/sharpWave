@@ -6,7 +6,7 @@
 # adapted 24.11.2019
 # updated 14.03.2020
 #
-MAIN_FILE = Program
+MAIN_FILE = SharpWave
 
 # change this to the depth of the project folders
 # if needed, add a preffix for a common project folder

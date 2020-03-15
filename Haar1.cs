@@ -29,68 +29,39 @@ using System;
 
 namespace SharpWave
 {
-/**
- * Alfred Haar's orthonormal wavelet transform.
- *
- * @date 08.02.2010 12:46:34
- * @author Christian (graetz23@gmail.com)
- */
-public class Haar1 : Wavelet {
 
-  /**
-   * Constructor setting up the orthonormal Haar wavelet coefficients and the
-   * scaling coefficients; normed, due to ||*||_2 -- euclidean norm. See the
-   * orthogonal version in class Haar1Orthogonal for more details.
-   *
-   * @date 08.02.2010 12:46:34
-   * @author Christian (graetz23@gmail.com)
-   */
-  public Haar1( ) : base( ) {
+  ///<summary>Alfred Haar's orthonormal wavelet transform.</summary>
+  ///<remarks>
+  /// Christian (graetz23@gmail.com) 08.02.2010 12:46:34
+  ///</remarks>
+  public class Haar1 : Wavelet {
 
-    _name = "Haar"; // name of the wavelet
+    ///<summary>
+    /// Constructor setting up the orthonormal Haar wavelet coefficients and
+    /// the scaling coefficients; normed, due to ||*||_2, the euclidean norm.
+    /// See the orthogonal version in class Haar1Orthogonal for more details.
+    ///</summary>
+    ///<remarks>
+    /// Christian (graetz23@gmail.com) 08.02.2010 12:46:34
+    ///</remarks>
+    public Haar1( ) : base( "Haar 1", 2, 2 ) {
 
-    _transformWavelength = 2; // minimal wavelength of input signal
+      double sqrt2 = Math.Sqrt( 2.0 ); // squre root of 2
 
-    _motherWavelength = 2; // wavelength of mother wavelet
+      _scalingDeCom[ 0 ] = 1.0 / sqrt2; // w0 = 1.4142135623730951 - normalized by square root of 2
+      _scalingDeCom[ 1 ] = 1.0 / sqrt2; // w1 = 1.4142135623730951 - normalized by square root of 2
 
-    double sqrt2 = Math.Sqrt( 2.0 );
+      _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // s0 = w1 - odd scaling is even wavelet parameter
+      _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // s1 = -w0 - even scaling is negative odd wavelet parameter
 
-    _scalingDeCom = new double[ _motherWavelength ];
-    _scalingDeCom[ 0 ] = 1.0 / sqrt2; // w0 = 1.4142135623730951 - normalized by square root of 2
-    _scalingDeCom[ 1 ] = 1.0 / sqrt2; // w1 = 1.4142135623730951 - normalized by square root of 2
+      // Copy to reconstruction filters due to orthogonality (orthonormality)!
+      for( int i = 0; i < _motherWavelength; i++ ) {
+        _scalingReCon[ i ] = _scalingDeCom[ i ]; //
+        _waveletReCon[ i ] = _waveletDeCom[ i ];
+      } // i
 
-    _waveletDeCom = new double[ _motherWavelength ];
-    _waveletDeCom[ 0 ] = _scalingDeCom[ 1 ]; // s0 = w1 - odd scaling is even wavelet parameter
-    _waveletDeCom[ 1 ] = -_scalingDeCom[ 0 ]; // s1 = -w0 - even scaling is negative odd wavelet parameter
+    } // method
 
-    // Copy to reconstruction filters due to orthogonality (orthonormality)!
-    _scalingReCon = new double[ _motherWavelength ];
-    _waveletReCon = new double[ _motherWavelength ];
-    for( int i = 0; i < _motherWavelength; i++ ) {
-      _scalingReCon[ i ] = _scalingDeCom[ i ]; //
-      _waveletReCon[ i ] = _waveletDeCom[ i ];
-    } // i
-
-  } // Haar1
-
-  /**
-   * The forward wavelet transform using the Alfred Haar's wavelet.
-   *
-   * @date 10.02.2010 08:26:06
-   * @author Christian (graetz23@gmail.com)
-   * @see jwave.transforms.wavelets.Wavelet#forward(double[])
-   */
-
-  /**
-   * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
-   * array keeping coefficients of Hilbert domain should be of length 2 to the
-   * power of p -- length = 2^p where p is a positive integer.
-   *
-   * @date 10.02.2010 08:26:06
-   * @author Christian (graetz23@gmail.com)
-   * @see jwave.transforms.wavelets.Wavelet#reverse(double[])
-   */
-
-} // class
+  } // class
 
 } // namespace

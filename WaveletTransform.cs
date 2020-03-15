@@ -58,22 +58,13 @@ namespace SharpWave
     ///<returns>Returns the stored Wavelet object.</returns>
     public Wavelet WAVELET { get { return _wavelet; } } // method
 
-    /**
-     *
-     *
-     * @date
-     * @author Christian (graetz23@gmail.com)
-     * @throws JWaveException
-     *           if given array is not of length 2^p | pEN
-     * @see jwave.transforms.BasicTransform#forward(double[])
-     */
-     ///<summary>
-     /// Performs a 1-D forward transform from time domain to Hilbert domain
-     /// using one kind of wavelet transform algorithm for a given array of
-     // dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., so on.
-     ///</summary>
-     ///<remarks>Christian (graetz23@gmail.com) 10.02.2010 08:23:24</remarks>
-     ///<returns>Coefficients of 1-D frequency or Hilbert space.</returns>
+    ///<summary>
+    /// Performs a 1-D forward transform from time domain to Hilbert domain
+    /// using one kind of wavelet transform algorithm for a given array of
+    // dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., so on.
+    ///</summary>
+    ///<remarks>Christian (graetz23@gmail.com) 10.02.2010 08:23:24</remarks>
+    ///<returns>Coefficients of 1-D frequency or Hilbert space.</returns>
     override public double[ ] forward( double[ ] arrTime ) {
       if( !isBinary( arrTime.Length ) )
         throw new Types.Data_NotValid( "WaveletTransform.forward - " +

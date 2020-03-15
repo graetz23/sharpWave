@@ -58,50 +58,52 @@ namespace SharpWave
     /// decomposition.
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 07:23:42</remarks>
-    protected double[ ] _scalingDeCom;
+    protected double[ ] _scalingDeCom = null;
 
     ///<summary>
     /// The coefficients of the mother wavelet (high pass filter) for
     /// decomposition.
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 07:23:42</remarks>
-    protected double[ ] _waveletDeCom;
+    protected double[ ] _waveletDeCom = null;
 
     ///<summary>
     /// The coefficients of the mother scaling (low pass filter) for
     /// reconstruction.
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 07:23:42</remarks>
-    protected double[ ] _scalingReCon;
+    protected double[ ] _scalingReCon = null;
 
      ///<summary>
      /// The coefficients of the mother wavelet (high pass filter) for
      /// reconstruction.
      ///</summary>
      ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 07:23:42</remarks>
-    protected double[ ] _waveletReCon;
+    protected double[ ] _waveletReCon = null;
 
     ///<summary>
     /// Constructor; predefine members to default values or null!
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 22:16:27</remarks>
-    public Wavelet( ) {
-      _name = null;
-      _motherWavelength = 0;
-      _transformWavelength = 0;
-      _scalingDeCom = null;
-      _waveletDeCom = null;
-      _scalingReCon = null;
-      _waveletReCon = null;
+    public Wavelet( String name,
+                    int motherWavelength, int transformWavelength ) {
+      _name = name;
+      _motherWavelength = motherWavelength;
+      _scalingDeCom = new double[ _motherWavelength ];
+      _waveletDeCom = new double[ _motherWavelength ];
+      _scalingReCon = new double[ _motherWavelength ];
+      _waveletReCon = new double[ _motherWavelength ];
+      _transformWavelength = transformWavelength;
     } // method
 
     ///<summary>
     /// The method builds form the scaling (low pass) coefficients for
-    /// decomposition of a filter, the matching coefficients for the wavelet (high
-    /// pass) for decomposition, for the scaling (low pass) for reconstruction, and
-    /// for the wavelet (Wavelethigh pass) of reconstruction. This method should be called
-    /// in the constructor of an orthonormal filter directly after defining the
-    /// orthonormal coefficients of the scaling (low pass) for decomposition!
+    /// decomposition of a filter, the matching coefficients for the wavelet
+    /// (high pass) for decomposition, for the scaling (low pass) for
+    /// reconstruction, and for the wavelet (Wavelethigh pass) of
+    /// reconstruction. This method should be called in the constructor of an
+    /// orthonormal filter directly after defining the orthonormal coefficients
+    /// of the scaling (low pass) for decomposition!
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 16.02.2014 13:19:27</remarks>
     protected void _buildOrthonormalSpace( ) {
@@ -130,7 +132,7 @@ namespace SharpWave
     public String TYPE { get{ return _name; } } // method
 
     ///<summary>
-    /// Returns the wavelength of the so called mother wavelet or scaling function.
+    /// Returns the wavelength of the mother wavelet or scaling function.
     /// </summary>
     ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 22:06:12</remarks>
     ///<returns>Zhe minimal wavelength for the mother wavelet.</returns>
@@ -145,8 +147,8 @@ namespace SharpWave
     /// The minimal wavelength of the input signal that can be transformed by
     /// this wavelet.
     ///</returns>
-    public int getTransformWavelength( ) {
-      return _transformWavelength;
+    public int TRANSFORMWAVELENGTH {
+      get { return _transformWavelength; }
     } // method
 
     ///<summary>
@@ -158,13 +160,15 @@ namespace SharpWave
     /// array of length of the mother wavelet wavelength keeping the
     /// decomposition low pass filter coefficients
     ///</returns>
-    public double[ ] getScalingDeComposition( ) {
-      int len =  _scalingDeCom.Length;
-      double [ ] arr = new double[ len ];
-      for( int i = 0; i < len; i++ ) {
-        arr[ i ] = _scalingDeCom[ i ];
-      } // loop
-      return arr;
+    public double[ ] SCALING_DECOMPOSITION {
+      get {
+        int len =  _scalingDeCom.Length;
+        double [ ] arr = new double[ len ];
+        for( int i = 0; i < len; i++ ) {
+          arr[ i ] = _scalingDeCom[ i ];
+        } // loop
+        return arr;
+      } // method
     } // method
 
     ///<summary>
@@ -176,13 +180,15 @@ namespace SharpWave
     /// array of length of the mother wavelet wavelength keeping the
     /// decomposition high pass filter coefficients
     ///</returns>
-    public double[ ] getWaveletDeComposition( ) {
-      int len =  _waveletDeCom.Length;
-      double [ ] arr = new double[ len ];
-      for( int i = 0; i < len; i++ ) {
-        arr[ i ] = _waveletDeCom[ i ];
-      } // loop
-      return arr;
+    public double[ ] WAVELET_DECOMPOSITION {
+      get {
+        int len =  _waveletDeCom.Length;
+        double [ ] arr = new double[ len ];
+        for( int i = 0; i < len; i++ ) {
+          arr[ i ] = _waveletDeCom[ i ];
+        } // loop
+        return arr;
+      }  // method
     } // method
 
     ///<summary>
@@ -194,13 +200,15 @@ namespace SharpWave
     /// array of length of the mother wavelet wavelength keeping the
     /// reconstruction low pass filter coefficients
     ///</returns>
-    public double[ ] getScalingReConstruction( ) {
-      int len =  _scalingReCon.Length;
-      double [ ] arr = new double[ len ];
-      for( int i = 0; i < len; i++ ) {
-        arr[ i ] = _scalingReCon[ i ];
-      } // loop
-      return arr;
+    public double[ ] SCALING_RECONSTRUCTION {
+      get {
+        int len =  _scalingReCon.Length;
+        double [ ] arr = new double[ len ];
+        for( int i = 0; i < len; i++ ) {
+          arr[ i ] = _scalingReCon[ i ];
+        } // loop
+        return arr;
+      } // method
     } // method
 
     ///<summary>
@@ -212,13 +220,15 @@ namespace SharpWave
     /// array of length of the mother wavelet wavelength keeping the
     /// reconstruction high pass filter coefficients
     ///</returns>
-    public double[ ] getWaveletReConstruction( ) {
-      int len =  _waveletReCon.Length;
-      double [ ] arr = new double[ len ];
-      for( int i = 0; i < len; i++ ) {
-        arr[ i ] = _waveletReCon[ i ];
-      } // loop
-      return arr;
+    public double[ ] WAVELET_RECONSTRUCTION {
+      get {
+        int len =  _waveletReCon.Length;
+        double [ ] arr = new double[ len ];
+        for( int i = 0; i < len; i++ ) {
+          arr[ i ] = _waveletReCon[ i ];
+        } // loop
+        return arr;
+      } // method
     } // method
 
     ///<summary>

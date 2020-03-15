@@ -75,18 +75,18 @@ namespace SharpWave
       double[ ] arrHilb = new double[ arrTime.Length ];
       for( int i = 0; i < arrTime.Length; i++ ) {
         arrHilb[ i ] = arrTime[ i ];
-      } // loop
+      } // rows
 
       int l = 0;
       int h = arrHilb.Length;
-      int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
+      int transformWavelength = _wavelet.TRANSFORMWAVELENGTH; // normally 2
       while( h >= transformWavelength && l < level ) {
 
         double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
 
         for( int i = 0; i < h; i++ ) {
           arrHilb[ i ] = arrTempPart[ i ];
-        } // loop
+        } // rows
 
         h = h >> 1;
         l++;
@@ -127,9 +127,9 @@ namespace SharpWave
       double[ ] arrTime = new double[ arrHilb.Length ];
       for( int i = 0; i < arrHilb.Length; i++ ) {
         arrTime[ i ] = arrHilb[ i ];
-      } // loop
+      } // rows
 
-      int transformWavelength = _wavelet.getTransformWavelength( ); // normally 2
+      int transformWavelength = _wavelet.TRANSFORMWAVELENGTH; // normally 2
       int h = transformWavelength;
 
       int steps = calcExponent( length );
@@ -142,7 +142,7 @@ namespace SharpWave
 
         for( int i = 0; i < h; i++ ) {
           arrTime[ i ] = arrTempPart[ i ];
-        } // loop
+        } // rows
 
         h = h << 1;
 

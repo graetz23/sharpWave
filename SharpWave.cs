@@ -30,19 +30,18 @@ using SharpWave;
 namespace Program
 {
 
-  using Types; // use Exception classes here
-
   class MainClass
   {
     public static void Main (string[] args)
     {
       try {
-        Console.WriteLine(
-          "SharpWave .. " +
-          "doing Fast Wavelet Haar Transform as minimal function test"
-          );
+        Console.WriteLine( "SharpWave .. " +
+        "doing Fast Wavelet Haar Transform as minimal function test" );
+        Console.WriteLine( );
 
-        Transform t = new Transform( new FastWaveletTransform( new Haar1( ) ) );
+        Transform t = new Transform(
+                        new FastWaveletTransform(
+                          new Haar1( ) ) );
 
         // 1-D example
         double[ ] arrTime = { 1, 1, 1, 1, 1, 1, 1, 1 };
@@ -61,6 +60,7 @@ namespace Program
         Console.Write( "reconstruction: " );
         for( int i = 0; i < arrReco.Length; i++ )
           Console.Write( arrReco[ i ] + " " );
+        Console.WriteLine( );
         Console.WriteLine( );
 
         // 2-D example

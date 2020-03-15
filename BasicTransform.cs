@@ -39,7 +39,6 @@ namespace SharpWave
   ///<remarks>Christian (graetz23@gmail.com) 08.02.2010 11:11:59</remarks>
   public abstract class BasicTransform {
 
-
     ///<summary>String identifier of the current Transform object.</summary>
     ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 14:25:56</remarks>
     protected String _type;
@@ -58,8 +57,8 @@ namespace SharpWave
     ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 18:13:34</remarks>
     public String TYPE { get { return _type; } } // method
 
-     ///<returns>Returns the Wavelet object or throws an exception.</returns>
-     ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 18:26:44</remarks>
+    ///<returns>Returns the Wavelet object or throws an exception.</returns>
+    ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 18:26:44</remarks>
     public virtual Wavelet WAVELET {
       get {
         throw new Types.Types_NotAvailable( "BasicTransform.WAVELET - " +
@@ -230,7 +229,7 @@ namespace SharpWave
     /// Performs the forward transform from time domain to frequency or Hilbert
     /// domain for a given 3-D array depending on the used transform algorithm
     /// by using the 1-D forward transform multiple times.
-    /// </summary>
+    ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 10.07.2010 18:08:17</remarks>
     ///<returns>Coefficients of 3-D frequency or Hilbert space.</returns>
     public double[ ,, ] forward( double[ ,, ] spcTime ) {
@@ -244,16 +243,16 @@ namespace SharpWave
     /// Performs the forward transform from time domain to frequency or Hilbert
     /// domain of certain levels for a given 3-D array depending on the used
     /// transform algorithm by using the 1-D forward transform multiple times.
-    /// lvlR - level to stop in dimension row of the cube
     /// lvlP - level to stop in dimension columns of the cube
     /// lvlQ - level to stop in dimension height of the cube
-    /// </summary>
+    /// lvlR - level to stop in dimension row of the cube
+    ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 12:58:34</remarks>
     ///<returns>
     /// Coefficients of 3-D frequency or Hilbert space of requested levels.
     ///</returns>
     public double[ ,, ] forward( double[ ,, ] spcTime,
-                                 int lvlR, int lvlP, int lvlQ ) {
+                                 int lvlP, int lvlQ, int lvlR ) {
       int noOfRows = spcTime.GetUpperBound( 0 ) + 1; // no of rows
       int noOfCols = spcTime.GetUpperBound( 1 ) + 1; // no of cols
       int noOfHigh = spcTime.GetUpperBound( 2 ) + 1; // no of high
@@ -295,7 +294,7 @@ namespace SharpWave
     /// Performs the reverse transform from frequency or Hilbert domain to time
     /// domain for a given 3-D array depending on the used transform algorithm
     /// by by using the 1-D reverse transform multiple times.
-    /// </summary>
+    ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 10.07.2010 18:09:54</remarks>
     ///<returns>Coefficients of 3-D time series of requested levels.</returns>
     public double[ ,, ] reverse( double[ ,, ] spcHilb ) {
@@ -310,14 +309,14 @@ namespace SharpWave
     /// domain of certain levels for a given 3-D array depending on the used
     /// transform algorithm by by using the 1-D reverse transform multiple
     /// times.
-    /// lvlR - level to start reconstruction for dimension rows of the cube
     /// lvlP - level to start reconstruction for dimension columns of the cube
     /// lvlQ - level to start reconstruction for dimension height of the cube
-    /// </summary>
+    /// lvlR - level to start reconstruction for dimension rows of the cube
+    ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 13:01:47</remarks>
     ///<returns>Coefficients of 3-D time series of requested levels.</returns>
     public double[ ,, ] reverse( double[ ,, ] spcHilb,
-                                 int lvlR, int lvlP, int lvlQ ) {
+                                 int lvlP, int lvlQ, int lvlR ) {
       int noOfRows = spcHilb.GetUpperBound( 0 ) + 1; // no of rows
       int noOfCols = spcHilb.GetUpperBound( 1 ) + 1; // no of cols
       int noOfHigh = spcHilb.GetUpperBound( 2 ) + 1; // no of high
