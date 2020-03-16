@@ -29,8 +29,10 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Base class for - stepping - forward and reverse methods, due to one kind
-  /// of a Fast Wavelet Transform (FWD) in 1-D using a specific Wavelet.
+  /// Base class for - stepping - forward and reverse methods, due to this is
+  /// "one kind of" a Fast Wavelet Transform (FWD) in 1-D using a specific
+  /// wavelet as main part of the orthogonal (orthonormal) transform. See other
+  /// wavelet classes for the core of the transform; e.g. class Haar1.
   ///</summary>
   ///<remarks>
   /// Christian (graetz23@gmail.com) 10.02.2010 08:10:42
@@ -49,107 +51,89 @@ namespace SharpWave
     } // FastWaveletTransform
 
     ///<summary>
-    /// Performs a 1-D forward transform from time domain to Hilbert domain using
-    /// one kind of a Fast Wavelet Transform (FWT) algorithm for a given array of
-    /// dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
-    /// However, the algorithms stops for a supported level that has be in the
-    /// range 0, .., p of the dimension of the input array; 0 is the time series
-    /// itself and p is the maximal number of possible levels.
+    /// Performs a 1-D forward transform from time domain to Hilbert domain
+    /// using one kind of a Fast Wavelet Transform (FWT) algorithm for a given
+    /// array of dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, ..,
+    /// and so on. However, the algorithms stops for a supported level that has
+    /// be in the range 0, .., p of the dimension of the input array; 0 is the
+    /// time series itself and p is the maximal number of possible levels.
     ///</summary>
     ///<remarks>
     /// Christian (graetz23@gmail.com) 22.03.2015 11:58:37
     ///</remarks>
     override public double[ ] forward( double[ ] arrTime, int level ) {
-
-      if( !isBinary( arrTime.Length ) )
-        throw new Types.Data_NotValid(
-          "FastWaveletTransform#forward - "
-        + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-        + "please use the Ancient Egyptian Decomposition for any other array length!" );
-
-      int noOfLevels = calcExponent( arrTime.Length );
-      if( level < 0 || level > noOfLevels )
-        throw new Types.Data_NotValid( "FastWaveletTransform#forward - "
-        + "given level is out of range for given array" );
-
-      double[ ] arrHilb = new double[ arrTime.Length ];
-      for( int i = 0; i < arrTime.Length; i++ ) {
+      if( !isBinary( arrTime.Length ) ) {
+        throw new Types.Data_NotValid( "FastWaveletTransform#forward - " +
+        "array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. " +
+        "use the Ancient Egyptian Decomposition for any other array length!" );
+      } // if
+      int length = arrTime.Length; // length of initial time domain
+      int noOfLevels = calcExponent( length );
+      if( level < 0 || level > noOfLevels ) {
+        throw new Types.Data_NotValid( "FastWaveletTransform#forward - " +
+        "given level is out of range for given array" );
+      } // if
+      double[ ] arrHilb = new double[ length ];
+      for( int i = 0; i < length; i++ ) {
         arrHilb[ i ] = arrTime[ i ];
       } // rows
-
       int l = 0;
-      int h = arrHilb.Length;
+      int h = length;
       int transformWavelength = _wavelet.TRANSFORMWAVELENGTH; // normally 2
       while( h >= transformWavelength && l < level ) {
-
-        double[ ] arrTempPart = _wavelet.forward( arrHilb, h );
-
+        double[ ] arrPart = _wavelet.forward( arrHilb, h );
         for( int i = 0; i < h; i++ ) {
-          arrHilb[ i ] = arrTempPart[ i ];
+          arrHilb[ i ] = arrPart[ i ];
         } // rows
-
         h = h >> 1;
         l++;
-
       } // levels
-
       return arrHilb;
-
     } // forward
 
     ///<summary>
-    /// Performs a 1-D reverse transform from Hilbert domain to time domain using
-    /// one kind of a Fast Wavelet Transform (FWT) algorithm for a given array of
-    /// dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, .., and so on.
-    /// However, the algorithms starts for at a supported level that has be in the
-    /// range 0, .., p of the dimension of the input array; 0 is the time series
-    /// itself and p is the maximal number of possible levels. The coefficients of
-    /// the input array have to match to the supported level.
+    /// Performs a 1-D reverse transform from Hilbert domain to time domain
+    /// using one kind of a Fast Wavelet Transform (FWT) algorithm for a given
+    /// array of dimension (length) 2^p | pEN; N = 2, 4, 8, 16, 32, 64, 128, ..,
+    /// and so on. However, the algorithms starts for at a supported level that
+    /// has be in the range 0, .., p of the dimension of the input array; 0 is
+    /// the time series itself and p is the maximal number of possible levels.
+    /// The coefficients of the input array have to match to the supported
+    /// level.
     ///</summary>
     ///<remarks>
     /// Christian (graetz23@gmail.com) 22.03.2015 12:00:10
     ///</remarks>
-    override public double[ ] reverse( double[ ] arrHilb, int level )
-    {
-
-      if( !isBinary( arrHilb.Length ) )
-        throw new Types.Data_NotValid(
-          "FastWaveletTransform#reverse - "
-        + "given array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. "
-        + "please use the Ancient Egyptian Decomposition for any other array length!" );
-
-      int noOfLevels = calcExponent( arrHilb.Length );
-      if( level < 0 || level > noOfLevels )
-        throw new Types.Data_NotValid( "FastWaveletTransform#reverse - "
-        + "given level is out of range for given array" );
-
+    override public double[ ] reverse( double[ ] arrHilb, int level ) {
+      if( !isBinary( arrHilb.Length ) ) {
+        throw new Types.Data_NotValid( "FastWaveletTransform#reverse - " +
+        "array length is not 2^p | p E N ... = 1, 2, 4, 8, 16, 32, .. " +
+        "use the Ancient Egyptian Decomposition for any other array length!" );
+      } // if
       int length = arrHilb.Length; // length of first Hilbert space
-      double[ ] arrTime = new double[ arrHilb.Length ];
-      for( int i = 0; i < arrHilb.Length; i++ ) {
+      int noOfLevels = calcExponent( length );
+      if( level < 0 || level > noOfLevels ) {
+        throw new Types.Data_NotValid( "FastWaveletTransform#reverse - " +
+       "given level is out of range for given array" );
+      } // if
+      double[ ] arrTime = new double[ length ];
+      for( int i = 0; i < length; i++ ) {
         arrTime[ i ] = arrHilb[ i ];
       } // rows
-
       int transformWavelength = _wavelet.TRANSFORMWAVELENGTH; // normally 2
       int h = transformWavelength;
-
       int steps = calcExponent( length );
-      for( int l = level; l < steps; l++ )
-        h = h << 1; // begin reverse transform at certain - matching - level of Hilbert space
-
-      while( h <= arrTime.Length && h >= transformWavelength ) {
-
-        double[ ] arrTempPart = _wavelet.reverse( arrTime, h );
-
-        for( int i = 0; i < h; i++ ) {
-          arrTime[ i ] = arrTempPart[ i ];
-        } // rows
-
-        h = h << 1;
-
+      for( int l = level; l < steps; l++ ) {
+        h = h << 1; // reverse transform at matching level of Hilbert space
       } // levels
-
+      while( h <= arrTime.Length && h >= transformWavelength ) {
+        double[ ] arrPart = _wavelet.reverse( arrTime, h );
+        for( int i = 0; i < h; i++ ) {
+          arrTime[ i ] = arrPart[ i ];
+        } // rows
+        h = h << 1;
+      } // levels
       return arrTime;
-
     } // reverse
 
   } // FastWaveletTransfrom
