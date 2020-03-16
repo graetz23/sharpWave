@@ -11,26 +11,28 @@ For a good how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
 For having a quick example, use _GNU/Linux_ having the _mono compiler_
 available. Then try:
 
-*git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && make run*
+**git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && make run**
 
 ### remarks
 The following functionality is available:
-- *1-D, 2-D, and 3-D* orthogonal *transform algorithms*; _class BasicTransform_:
-  - *Fast Wavelet Transform (FWT)*; _class FastWaveletTransform_,  
-  - (Fast) *Wavelet Packet Transform (WPT)*; _class WaveletPacketTransform_.
+- **1-D, 2-D, and 3-D** orthogonal **transform algorithms**; _class BasicTransform_:
+  - **Fast Wavelet Transform (FWT)**; _class FastWaveletTransform_,  
+  - (Fast) **Wavelet Packet Transform (WPT)**; _class WaveletPacketTransform_,
+  - **Discrete Fourier Transform (DFT)**; _class Discrete Fourier Transform_.
 - Orthogonal and in most cases orthonormal wavelets:
-  - Orthonormal *Haar Wavelet*; _class Haar1_.
+  - Orthonormal **Haar Wavelet**; _class Haar1_.
 
-*have fun :-)*
+**have fun :-)**
 
 ## ChangeLog
 
 ### 20200316
+- ported the Discrete Fourier Transform (DFT),
 - ported the (Fast) Wavelet Packet Transform (WPT); Wavelet Packet Decomposition (WPD),
 - extended the _class SharpWave_ for testing the WPT / WPD algorithm.
 
 ### 20200315
-- ported _getter_ methods to C#'s _lmabda_ style
+- ported _getter_ methods to C#'s _lambda_ style
 - reconstructed the Constructors of _Transform_ classes,
 - decided to use _C#'s multidimensional_ instead of _jagged_ arrays,
 - added 2-D forward and reverse (stepping) algorithms,
