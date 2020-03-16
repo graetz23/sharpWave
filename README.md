@@ -5,7 +5,7 @@
 [JWave](https://github.com/graetz23/JWave) was ported to [sharpWave](https://github.com/graetz23/sharpWave) using Microsoft's C# programming language.
 
 ### HowTo
-For a good how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
+For a _some_ how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
 
 ### building
 For having a quick example, use _GNU/Linux_ having the _mono compiler_
@@ -18,6 +18,7 @@ The following functionality is available:
 - **1-D, 2-D, and 3-D** orthogonal **transform algorithms**; _class BasicTransform_:
   - **Fast Wavelet Transform (FWT)**; _class FastWaveletTransform_,  
   - (Fast) **Wavelet Packet Transform (WPT)**; _class WaveletPacketTransform_,
+  - Some **Shifting Wavelet Transform (SWT)**; _class ShiftingWaveletTransform_,
   - **Discrete Fourier Transform (DFT)**; _class Discrete Fourier Transform_.
 - Orthogonal and in most cases orthonormal wavelets:
   - Orthonormal **Haar Wavelet**; _class Haar1_.
@@ -28,7 +29,9 @@ The following functionality is available:
 
 ### 20200316
 - ported the Discrete Fourier Transform (DFT),
+- ported the _some_ Shifting Wavelet Transform (SWT),
 - ported the (Fast) Wavelet Packet Transform (WPT); Wavelet Packet Decomposition (WPD),
+- extended the _class SharpWave_ for testing the SWT algorithm.
 - extended the _class SharpWave_ for testing the WPT / WPD algorithm.
 
 ### 20200315
