@@ -36,6 +36,7 @@ namespace SharpWave
   ///</summary>
   ///<remarks>
   /// Christian (graetz23@gmail.com) 03.06.2010 22:04:35
+  /// TODO NOT working for odd values; recheck coefficients ..
   ///</remarks>
   public class Legendre3 : Wavelet {
 

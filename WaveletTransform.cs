@@ -31,7 +31,7 @@ namespace SharpWave
 
   ///<summary>Base class for Wavelet Transforms.</summary>
   ///<remarks>Christian (graetz23@gmail.com) 15.02.2014 21:05:33</remarks>
-  public abstract class WaveletTransform : BasicTransform {
+  public abstract class WaveletTransform : Algorithm {
 
     ///<summary>
     /// The used Eavelet object presenting 1-D forward and reverse transform.

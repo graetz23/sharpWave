@@ -30,14 +30,14 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
+  /// Basic transform algorithm like Fast Fourier Transform (FFT), Fast
   /// Wavelet Transform (FWT), Fast Wavelet Packet Transform (WPT), or Discrete
   /// Wavelet Transform (DWT). Naming of this class due to en.wikipedia.org; to
   /// write Fourier series in terms of the 'basic waves' of function:
   /// e^(2*pi*i*w).
   ///</summary>
   ///<remarks>Christian (graetz23@gmail.com) 08.02.2010 11:11:59</remarks>
-  public abstract class BasicTransform {
+  public abstract class Algorithm {
 
     ///<summary>String identifier of the current Transform object.</summary>
     ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 14:25:56</remarks>
@@ -45,9 +45,9 @@ namespace SharpWave
 
      ///<summary>Constructor taking type of transform as string.</summary>
      ///<remarks>Christian (graetz23@gmail.com) 19.02.2014 18:38:21</remarks>
-    public BasicTransform( String type ) {
+    public Algorithm( String type ) {
       if( String.IsNullOrWhiteSpace( type ) ) {
-        throw new Types.Types_NotPossible( "BasicTransform - " +
+        throw new Types.Types_NotPossible( "Algorithm - " +
           "given string for transform type is null, empty or whitespace!" );
         } // if
       _type = type;
@@ -61,7 +61,7 @@ namespace SharpWave
     ///<remarks>Christian (graetz23@gmail.com) 14.03.2015 18:26:44</remarks>
     public virtual Wavelet WAVELET {
       get {
-        throw new Types.Types_NotAvailable( "BasicTransform.WAVELET - " +
+        throw new Types.Types_NotAvailable( "Algorithm.WAVELET - " +
           "not available while this is not necessarily a wavelet transform!" );
         } // method
     } // method
@@ -99,7 +99,7 @@ namespace SharpWave
     /// Coefficients of 1-D frequency or Hilbert space of requested level.
     ///</returns>
     public virtual double[ ] forward( double[ ] arrTime, int level ) {
-      throw new Types.Types_NotImplemented( "BasicTransform.forward - "
+      throw new Types.Types_NotImplemented( "Algorithm.forward - "
           + "method is not implemented for this transform type!" );
     } // forward
 
@@ -112,7 +112,7 @@ namespace SharpWave
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 11:34:27</remarks>
     ///<returns>Coefficients of time series of requested level.</returns>
     public virtual double[ ] reverse( double[ ] arrFreq, int level ) {
-      throw new Types.Types_NotAvailable( "BasicTransform.reverse - "
+      throw new Types.Types_NotAvailable( "Algorithm.reverse - "
           + "method is not implemented for this transform type!" );
     } // reverse
 
@@ -377,7 +377,7 @@ namespace SharpWave
     ///<returns>p as number = 2^p | p € N</returns>
     protected int calcExponent( int number ) {
       if( !isBinary( number ) )
-        throw new Types.Types_NotPossible( "BasicTransform.calcExponent - "
+        throw new Types.Types_NotPossible( "Algorithm.calcExponent - "
             + "given number is not binary: "
             + "2^p | pEN .. = 1, 2, 4, 8, 16, 32, .. " );
       int exp = (int)( Math.Log( number ) / Math.Log( 2.0 ) );
@@ -448,6 +448,6 @@ namespace SharpWave
     //   return arrTime;
     // } // recompose
 
-  } // BasicTransform
+  } // Algorithm
 
 } // namespace

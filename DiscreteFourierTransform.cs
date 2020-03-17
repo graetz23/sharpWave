@@ -40,7 +40,7 @@ namespace SharpWave
    ///<remarks>
    /// Christian (graetz23@gmail.com) 14.03.2015 18:30:35
    ///</remarks>
-  public class DiscreteFourierTransform : BasicTransform {
+  public class DiscreteFourierTransform : Algorithm {
 
     ///<summary>Constructor; does nothing</summary>
     ///<remarks>

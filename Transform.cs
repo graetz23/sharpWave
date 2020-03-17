@@ -38,24 +38,24 @@ namespace SharpWave
     /// <summary>
     /// Transform object of base class type; BasicTransfrom.
     /// </summary>
-    protected BasicTransform _basicTransform;
+    protected Algorithm _algorithm;
 
     ///<summary>
     /// Constructor; needs some object like DiscreteFourierTransform,
     /// FastBasicTransform, WaveletPacketTransfom, ...
     ///</summary>
     ///<remarks>Christian (graetz23@gmail.com) 19.05.2009 09:50:24</remarks>
-    public Transform( BasicTransform basicTransform )
+    public Transform( Algorithm basicTransform )
     {
       if(basicTransform == null ) {
         throw new Types.Types_NotExistent( "Transform - " +
           "Given transform object is null!" );
       } // if
-      if(!(basicTransform is BasicTransform)) {
+      if(!(basicTransform is Algorithm)) {
         throw new Types.Types_NotValid( "Transform - " +
           "Given transform object is not correct type!" );
       } // if
-      _basicTransform = basicTransform;
+      _algorithm = basicTransform;
     } // method
 
     ///<summary>
@@ -65,7 +65,7 @@ namespace SharpWave
     ///<returns>Coefficients of frequency or Hilbert domain</returns>
     public double[ ] forward( double[ ] arrTime ) {
       double[ ] arrHilb = null;
-      arrHilb = _basicTransform.forward( arrTime );
+      arrHilb = _algorithm.forward( arrTime );
       return arrHilb;
     } // forward
 
@@ -76,7 +76,7 @@ namespace SharpWave
     ///<returns>Coefficients of frequency or Hilbert domain</returns>
     public double[ ] reverse( double[ ] arrHilb ) {
       double[ ] arrTime = null;
-      arrTime = _basicTransform.reverse( arrHilb );
+      arrTime = _algorithm.reverse( arrHilb );
       return arrTime;
     } // reverse
 
@@ -90,7 +90,7 @@ namespace SharpWave
     ///</returns>
     public double[ ] forward( double[ ] arrTime, int level ) {
       double[ ] arrHilb = null;
-      arrHilb = _basicTransform.forward( arrTime, level );
+      arrHilb = _algorithm.forward( arrTime, level );
       return arrHilb;
     } // forward
 
@@ -106,7 +106,7 @@ namespace SharpWave
     ///</returns>
     public double[ ] reverse( double[ ] arrHilb, int level ) {
       double[ ] arrTime = null;
-      arrTime = _basicTransform.reverse( arrHilb, level );
+      arrTime = _algorithm.reverse( arrHilb, level );
       return arrTime;
     } // reverse
 
@@ -120,7 +120,7 @@ namespace SharpWave
     ///</returns>
     public double[ , ] forward( double[ , ] matrixTime ) {
       double[ , ] matrixHilb = null;
-      matrixHilb = _basicTransform.forward( matrixTime );
+      matrixHilb = _algorithm.forward( matrixTime );
       return matrixHilb;
     } // forward
 
@@ -134,7 +134,7 @@ namespace SharpWave
     ///</returns>
     public double[ , ] reverse( double[ , ] matrixHilb ) {
       double[ , ] matrixTime = null;
-      matrixTime = _basicTransform.reverse( matrixHilb );
+      matrixTime = _algorithm.reverse( matrixHilb );
       return matrixTime;
     } // reverse
 
@@ -149,7 +149,7 @@ namespace SharpWave
     public double[ , ] forward( double[ , ] matrixTime,
                                 int levelM, int levelN ) {
       double[ , ] matrixHilb = null;
-      matrixHilb = _basicTransform.forward( matrixTime, levelM, levelN );
+      matrixHilb = _algorithm.forward( matrixTime, levelM, levelN );
       return matrixHilb;
     } // forward
 
@@ -164,7 +164,7 @@ namespace SharpWave
     public double[ , ] reverse( double[ , ] matrixHilb,
                                 int levelM, int levelN ) {
       double[ , ] matrixTime = null;
-      matrixTime = _basicTransform.reverse( matrixHilb, levelM, levelN );
+      matrixTime = _algorithm.reverse( matrixHilb, levelM, levelN );
       return matrixTime;
     } // reverse
 
@@ -178,7 +178,7 @@ namespace SharpWave
     ///</returns>
     public double[ ,, ] forward( double[ ,, ] spaceTime ) {
       double[ ,, ] spaceHilb = null;
-      spaceHilb = _basicTransform.forward( spaceTime );
+      spaceHilb = _algorithm.forward( spaceTime );
       return spaceHilb;
     } // forward
 
@@ -192,7 +192,7 @@ namespace SharpWave
     ///</returns>
     public double[ ,, ] reverse( double[ ,, ] spaceHilb ) {
       double[ ,, ] spaceTime = null;
-      spaceTime = _basicTransform.reverse( spaceHilb );
+      spaceTime = _algorithm.reverse( spaceHilb );
       return spaceTime;
     } // reverse
 
@@ -210,7 +210,7 @@ namespace SharpWave
     public double[ ,, ] forward( double[ ,, ] spaceTime,
                                  int levelP, int levelQ, int levelR ) {
       double[ ,, ] spaceHilb = null;
-      spaceHilb = _basicTransform.forward( spaceTime, levelP, levelQ, levelR );
+      spaceHilb = _algorithm.forward( spaceTime, levelP, levelQ, levelR );
       return spaceHilb;
     } // forward
 
@@ -228,7 +228,7 @@ namespace SharpWave
     public double[ ,, ] reverse( double[ ,, ] spaceHilb,
                                  int levelP, int levelQ, int levelR ) {
       double[ ,, ] spaceTime = null;
-      spaceTime = _basicTransform.reverse( spaceHilb, levelP, levelQ, levelR );
+      spaceTime = _algorithm.reverse( spaceHilb, levelP, levelQ, levelR );
       return spaceTime;
     } // reverse
 
