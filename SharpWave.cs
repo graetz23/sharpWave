@@ -41,7 +41,7 @@ namespace Program
 
         Transform t = new Transform(
                         new FastWaveletTransform(
-                          new Haar1( ) ) );
+                          new Haar1Orthogonal( ) ) );
 
         // 1-D example
         // double[ ] arrTime = { 1, 1, 1, 1, 1, 1, 1, 1 }; // const

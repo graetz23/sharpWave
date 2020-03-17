@@ -24,6 +24,7 @@ The following functionality is available:
   - **Orthonormal Haar Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
+  - **Orthonormal Daubechies 2 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
 - Everything was coded
   - [atom](https://atom.io/) editor,
   - [mono](https://www.mono-project.com/) compiler,
@@ -38,7 +39,8 @@ The following functionality is available:
 - ported Alfred Haar's orthogonal wavelet:
   - extended the explanation of [orthogonality and orthonormality](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - made the methods _forward_ and _reverse_ of _class Wavelet_ virtual.
-- added the _Coiflet1_ wavelet.
+- added the _Coiflet 1_ wavelet,
+- added the _Daubechies 2_ wavelet.
 
 ### 20200316
 - ported the Discrete Fourier Transform (DFT),
