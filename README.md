@@ -25,6 +25,7 @@ The following functionality is available:
   - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
   - **Orthonormal Legendre 1 Wavelet**; [class Legendre1](https://github.com/graetz23/sharpWave/blob/master/Legendre1.cs),
+  - **Orthonormal Legendre 2 Wavelet**; [class Legendre2](https://github.com/graetz23/sharpWave/blob/master/Legendre2.cs); not working properly,
   - **Orthonormal Daubechies 2 Wavelet**; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
   - **Orthonormal Symlet 2 Wavelet**; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs),
 - Everything was coded
@@ -43,6 +44,7 @@ The following functionality is available:
   - made the methods _forward_ and _reverse_ of _class Wavelet_ virtual.
 - added the _Coiflet 1_ wavelet,
 - added the _Legendre 1_ wavelet,
+- added the _Legendre 2_ wavelet,
 - added the _Daubechies 2_ wavelet,
 - added the _Symlet 2_ wavelet.
 

@@ -41,10 +41,11 @@ namespace Program
 
         Transform t = new Transform(
                         new FastWaveletTransform(
-                          new Haar1Orthogonal( ) ) );
+                          // new Haar1Orthogonal( ) ) );
                           // new Haar1( ) ) );
                           // new Coiflet1( ) ) );
                           // new Legendre1( ) ) );
+                          new Legendre2( ) ) );
                           // new Daubechies2( ) ) );
                           // new Symlet2( ) ) );
 
