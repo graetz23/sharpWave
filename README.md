@@ -1,5 +1,5 @@
 ## sharpWave
-### A _pragmatic_ port of [JWave](https://github.com/graetz23/JWave) to C#
+### A _refactored_ port of [JWave](https://github.com/graetz23/JWave) to C#
 
 ### Introduction
 [JWave](https://github.com/graetz23/JWave) was ported to [sharpWave](https://github.com/graetz23/sharpWave) using Microsoft's C# programming language.

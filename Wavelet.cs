@@ -1,5 +1,5 @@
 ///
-/// SharpWave - a pragmatic port of JWave
+/// SharpWave - A refactored port of JWave
 /// https://github.com/graetz23/JWave
 ///
 /// MIT License
