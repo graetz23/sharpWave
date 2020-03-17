@@ -21,8 +21,9 @@ The following functionality is available:
   - Some **Shifting Wavelet Transform (SWT)**; _class ShiftingWaveletTransform_,
   - **Discrete Fourier Transform (DFT)**; _class Discrete Fourier Transform_.
 - Orthogonal and in most cases orthonormal wavelets:
-  - Orthonormal **Haar Wavelet**; _class Haar1_,
-  - Orthogonal **Haar Wavelet**; _class Haar1Orthogonal_.
+  - **Orthonormal Haar Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
+  - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/blob/master/Haar1Orthogonal.cs),
+  - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/blob/master/Coiflet1.cs),
 
 **have fun :-)**
 
@@ -32,6 +33,7 @@ The following functionality is available:
 - ported Alfred Haar's orthogonal wavelet:
   - extended the explanation of [orthogonality and orthonormality](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - made the methods _forward_ and _reverse_ of _class Wavelet_ virtual.
+- added the _Coiflet1_ wavelet.
 
 ### 20200316
 - ported the Discrete Fourier Transform (DFT),

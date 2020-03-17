@@ -25,8 +25,6 @@
 /// SOFTWARE.
 ///
 
-using System;
-
 namespace SharpWave
 {
 
@@ -108,22 +106,23 @@ namespace SharpWave
   /// The orthogonal version of the Haar wavelet will result in some beautiful
   /// hilbert domain using Fast Wavelet or Wavelet Packet Transform:
   /// 16 0 0 0
-  /// 0 0 0 0
-  /// 0 0 0 0
-  /// 0 0 0 0
-  /// One can see that all energy is just summed up which looks fine but is
-  /// complicated to correlate if an application is going needs to deal in
-  /// wavelet sub spaces, Hibert sub domains, respectively.
+  ///  0 0 0 0
+  ///  0 0 0 0
+  ///  0 0 0 0
+  /// One can see that all energy is just summed up which looks fine but gets
+  /// complicated to correlate, if an application has the need to deal in
+  /// different wavelet sub spaces, Hibert sub domains, respectively.
   ///
-  /// For reconstruction the energy correction by 1/2 gets necessary and results
-  /// (in case of no roundings; e.g. 0.999999999999) in:
+  /// For reconstruction the energy correction by 1/2 gets necessary and
+  /// results (in case of no rounding errors; e.g. 0.999999999999) in:
   /// 1 1 1 1
   /// 1 1 1 1
   /// 1 1 1 1
   /// 1 1 1 1
-  /// Which can be used for any application always dealing with all levels of
-  /// the sub spaces or for checking wheater some changed algorithm is working
-  /// fine.
+  ///
+  /// Such orthogonal wavelets can be used for any application always dealing
+  /// with all levels of the sub spaces or for checking wheater some changed
+  /// or new transform algorithm is working properly.
   ///
   /// An alternative is to use coefficients keeping the correction implicitely:
   ///
