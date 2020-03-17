@@ -42,6 +42,10 @@ namespace Program
         Transform t = new Transform(
                         new FastWaveletTransform(
                           new Haar1Orthogonal( ) ) );
+                          // new Haar1( ) ) );
+                          // new Coiflet1( ) ) );
+                          // new Daubechies2( ) ) );
+                          // new Symlet2( ) ) );
 
         // 1-D example
         // double[ ] arrTime = { 1, 1, 1, 1, 1, 1, 1, 1 }; // const
