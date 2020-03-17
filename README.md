@@ -5,7 +5,7 @@
 [JWave](https://github.com/graetz23/JWave) was ported to [sharpWave](https://github.com/graetz23/sharpWave) using Microsoft's C# programming language.
 
 ### HowTo
-For a _some_ how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
+For _some_ how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
 
 ### building
 For having a quick example, use _GNU/Linux_ having the _mono compiler_
@@ -24,7 +24,11 @@ The following functionality is available:
   - **Orthonormal Haar Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
-
+- Everything was coded
+  - [atom](https://atom.io/) editor,
+  - [mono](https://www.mono-project.com/) compiler,
+  - [Gnome](https://www.gnome.org/) windows manager,
+  - and [debian](https://www.debian.org/) GNU/Linux,
 **have fun :-)**
 
 ## ChangeLog
