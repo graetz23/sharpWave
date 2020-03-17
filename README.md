@@ -29,7 +29,8 @@ The following functionality is available:
   - **Orthonormal Legendre 3 Wavelet**; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly,
   - **Orthonormal Daubechies 2 Wavelet**; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
   - **Orthonormal Symlet 2 Wavelet**; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs),
-- Everything was coded
+  - **Orthogonal Discrete Mayer Wavelet**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/DiscreteMayer.cs); strong rounding errors; ~1e-2,
+- Everything was coded using
   - [atom](https://atom.io/) editor,
   - [mono](https://www.mono-project.com/) compiler,
   - [Gnome](https://www.gnome.org/) windows manager,
@@ -49,6 +50,7 @@ The following functionality is available:
 - added the _Legendre 3_ wavelet,
 - added the _Daubechies 2_ wavelet,
 - added the _Symlet 2_ wavelet.
+- added the _DiscreteMayer_ wavelet.
 
 ### 20200316
 - ported the Discrete Fourier Transform (DFT),

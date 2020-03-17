@@ -35,20 +35,23 @@ namespace Program
     public static void Main (string[] args)
     {
       try {
-        Console.WriteLine( "SharpWave .. " +
-        "doing Fast Wavelet Haar Transform as minimal function test" );
-        Console.WriteLine( );
 
-        Transform t = new Transform(
-                        new FastWaveletTransform(
-                          new Haar1Orthogonal( ) ) );
-                          // new Haar1( ) ) );
-                          // new Coiflet1( ) ) );
-                          // new Legendre1( ) ) );
-                          // new Legendre2( ) ) );
-                          // new Legendre3( ) ) );
-                          // new Daubechies2( ) ) );
-                          // new Symlet2( ) ) );
+        Wavelet wavelet = null;
+        wavelet = new Haar1Orthogonal( );
+        // wavelet = new Haar1( );
+        // wavelet = new Coiflet1( );
+        // wavelet = new Legendre1( );
+        // wavelet = new Legendre2( );
+        // wavelet = new Legendre3( );
+        // wavelet = new Daubechies2( );
+        // wavelet = new Symlet2( );
+        // wavelet = new DiscreteMayer( );
+
+        Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+
+        Console.WriteLine( "SharpWave .. " +
+        "doing Fast Wavelet Transform by " + wavelet.TYPE + ":" );
+        Console.WriteLine( );
 
         // 1-D example
         // double[ ] arrTime = { 1, 1, 1, 1, 1, 1, 1, 1 }; // const
