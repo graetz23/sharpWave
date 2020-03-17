@@ -41,6 +41,7 @@ The following functionality is available:
 ## ChangeLog
 
 ### 20200317
+- renamed class _BasicTransform_ to _Algorithm_,
 - ported Alfred Haar's orthogonal wavelet:
   - extended the explanation of [orthogonality and orthonormality](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - made the methods _forward_ and _reverse_ of _class Wavelet_ virtual.
