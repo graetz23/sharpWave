@@ -241,7 +241,7 @@ namespace SharpWave
     ///<returns>
     /// Coefficients representing by frequency or Hilbert domain.
     /// </returns>
-    public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
+    virtual public double[ ] forward( double[ ] arrTime, int arrTimeLength ) {
       double[ ] arrHilb = new double[ arrTimeLength ];
       int h = arrHilb.Length >> 1; // .. -> 8 -> 4 -> 2 .. shrinks in each step by half wavelength
       for( int i = 0; i < h; i++ ) {
@@ -267,7 +267,7 @@ namespace SharpWave
     ///<returns>
     /// Coefficients representing by time domain.
     /// </returns>
-    public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
+    virtual public double[ ] reverse( double[ ] arrHilb, int arrHilbLength ) {
       double[ ] arrTime = new double[ arrHilbLength ];
       for( int i = 0; i < arrTime.Length; i++ )
         arrTime[ i ] = 0.0; // set to zero before sum up
