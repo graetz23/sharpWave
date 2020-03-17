@@ -30,33 +30,35 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Orthonormal Legendre wavelet transform of four coefficients based on the
-  /// Legendre polynomial; normed, due to ||*||2 euclidean norm..
+  /// Orthonormal Legendre wavelet transform of six coefficients based on the
+  /// Legendre polynomial. However the smallest Legendre wavelet is a mirrored
+  /// Haar Wavelet.
   ///</summary>
   ///<remarks>
-  /// Christian (graetz23@gmail.com) 03.06.2010 21:19:04
-  /// TODO NOT working for odd values; recheck coefficients ..
+  /// Christian (graetz23@gmail.com) 03.06.2010 22:04:35
   ///</remarks>
-  public class Legendre2 : Wavelet {
+  public class Legendre3 : Wavelet {
 
     ///<summary>
     /// Constructor calculating analytically the orthogonal Legendre wavelet of
-    /// four coefficients, orthonormalizes them (normed, due to ||*||2
-    /// euclidean norm), and builds the scaling coefficients, and the
-    /// orthonormal bases afterwards; .
+    /// six coefficients, orthonormalizes them (normed, due to ||*||2 euclidean
+    /// norm), and builds the scaling coefficients, and the orthonormal bases
+    /// afterwards; .
     ///</summary>
     ///<remarks>
-    /// Christian (graetz23@gmail.com) 03.06.2010 21:19:04
+    /// Christian (graetz23@gmail.com) 03.06.2010 22:04:35
     ///</remarks>
-    public Legendre2( ) : base( "Legendre 2", 4, 2 ) {
+    public Legendre3( ) : base( "Legendre 3", 6, 2 ) {
       double sqrt02 = Math.Sqrt( 2.0 ); // 1.4142135623730951
       // these coefficients are already orthonormal
-      _scalingDeCom[ 0 ] = ( -5.0 / 8.0 ) / sqrt02; // s0
-      _scalingDeCom[ 1 ] = ( -3.0 / 8.0 ) / sqrt02; // s1
-      _scalingDeCom[ 2 ] = ( -3.0 / 8.0 ) / sqrt02; // s2
-      _scalingDeCom[ 3 ] = ( -5.0 / 8.0 ) / sqrt02; // s3
+      _scalingDeCom[ 0 ] = ( -63.0 / 128.0 ) / sqrt02; // h0
+      _scalingDeCom[ 1 ] = ( -35.0 / 128.0 ) / sqrt02; // h1
+      _scalingDeCom[ 2 ] = ( -30.0 / 128.0 ) / sqrt02; // h2
+      _scalingDeCom[ 3 ] = ( -30.0 / 128.0 ) / sqrt02; // h3
+      _scalingDeCom[ 4 ] = ( -35.0 / 128.0 ) / sqrt02; // h4
+      _scalingDeCom[ 5 ] = ( -63.0 / 128.0 ) / sqrt02; // h5
       _buildBaseSystem( ); // build all other from low pass decomposition
-    } // Legendre2
+    } // Legendre3
 
   } // class
 
