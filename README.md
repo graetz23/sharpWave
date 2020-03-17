@@ -22,8 +22,8 @@ The following functionality is available:
   - **Discrete Fourier Transform (DFT)**; _class Discrete Fourier Transform_.
 - Orthogonal and in most cases orthonormal wavelets:
   - **Orthonormal Haar Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
-  - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/blob/master/Haar1Orthogonal.cs),
-  - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/blob/master/Coiflet1.cs),
+  - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
+  - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
 
 **have fun :-)**
 
