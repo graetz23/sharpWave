@@ -30,7 +30,7 @@ The following functionality is available:
 
 ### 20200317
 - ported Alfred Haar's orthogonal wavelet:
-  - extended the explanation of [https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs](orthogonality and orthonormality),
+  - extended the explanation of [orthogonality and orthonormality](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - made the methods _forward_ and _reverse_ of _class Wavelet_ virtual.
 
 ### 20200316
