@@ -44,6 +44,7 @@ namespace Program
                           new Haar1Orthogonal( ) ) );
                           // new Haar1( ) ) );
                           // new Coiflet1( ) ) );
+                          // new Legendre1( ) ) );
                           // new Daubechies2( ) ) );
                           // new Symlet2( ) ) );
 
