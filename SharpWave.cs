@@ -40,6 +40,7 @@ namespace Program
         wavelet = new Haar1Orthogonal( );
         // wavelet = new Haar1( );
         // wavelet = new Coiflet1( );
+        // wavelet = new Coiflet2( );
         // wavelet = new Legendre1( );
         // wavelet = new Legendre2( );
         // wavelet = new Legendre3( );
