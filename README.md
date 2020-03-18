@@ -29,6 +29,7 @@ The following functionality is available:
   - **Orthonormal Legendre 3 Wavelet**; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly,
   - **Orthonormal Daubechies 2 Wavelet**; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
   - **Orthonormal Symlet 2 Wavelet**; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs),
+  - **Orthogonal Cohen Daubechies Feauveau (CDF) 5/3**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/CDF53.cs); not working properly, 
   - **Orthogonal Discrete Mayer Wavelet**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/DiscreteMayer.cs); strong rounding errors; ~1e-2,
 - Everything was coded using
   - [atom](https://atom.io/) editor,
@@ -39,6 +40,9 @@ The following functionality is available:
 **have fun :-)**
 
 ## ChangeLog
+
+### 20200318
+- added the _Cohen Daubechies Feauveau (CDF) 5/3_ wavelet,
 
 ### 20200317
 - renamed class _BasicTransform_ to _Algorithm_,

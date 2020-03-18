@@ -47,7 +47,7 @@ namespace SharpWave
      ///<remarks>Christian (graetz23@gmail.com) 19.02.2014 18:38:21</remarks>
     public Algorithm( String type ) {
       if( String.IsNullOrWhiteSpace( type ) ) {
-        throw new Types.Types_NotPossible( "Algorithm - " +
+        throw new Types.Types_NotAvailable( "Algorithm - " +
           "given string for transform type is null, empty or whitespace!" );
         } // if
       _type = type;
@@ -112,7 +112,7 @@ namespace SharpWave
     ///<remarks>Christian (graetz23@gmail.com) 22.03.2015 11:34:27</remarks>
     ///<returns>Coefficients of time series of requested level.</returns>
     public virtual double[ ] reverse( double[ ] arrFreq, int level ) {
-      throw new Types.Types_NotAvailable( "Algorithm.reverse - "
+      throw new Types.Types_NotImplemented( "Algorithm.reverse - "
           + "method is not implemented for this transform type!" );
     } // reverse
 

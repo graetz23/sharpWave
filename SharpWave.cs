@@ -45,6 +45,7 @@ namespace Program
         // wavelet = new Legendre3( );
         // wavelet = new Daubechies2( );
         // wavelet = new Symlet2( );
+        // wavelet = new CDF53( );
         // wavelet = new DiscreteMayer( );
 
         Transform t = new Transform( new FastWaveletTransform( wavelet ) );
