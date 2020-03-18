@@ -30,37 +30,49 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Ingrid Daubechies' orthonormal Coiflet wavelet of twelve coefficients.
+  /// Ingrid Daubechies' orthonormal Coiflet wavelet of twentyfour coefficients.
   ///</summary>
   ///<remarks>
-  /// Christian (graetz23@gmail.com) 15.02.2014 22:33:55
+  /// Christian (graetz23@gmail.com) 16.02.2014 01:46:11
   ///</remarks>
-  public class Coiflet2 : Wavelet {
+  public class Coiflet4 : Wavelet {
 
     ///<summary>
     /// Constructor calculating analytically the orthogonal Coiflet wavelet of
-    /// twelve coefficients, orthonormalizes them (normed, due to ||*||2
+    /// twentyfour coefficients, orthonormalizes them (normed, due to ||*||2
     /// euclidean norm), and builds the scaling coefficients, and the
     /// orthonormal bases afterwards.
     ///</summary>
     ///<remarks>
-    /// Christian (graetz23@gmail.com) 15.02.2014 22:33:55
+    /// Christian (graetz23@gmail.com) 16.02.2014 01:46:11
     ///</remarks>
-    public Coiflet2( ) : base( "Coiflet 2", 12, 2 ) {
-      _scalingDeCom[ 0 ] = -0.0007205494453645122;
-      _scalingDeCom[ 1 ] = -0.0018232088707029932;
-      _scalingDeCom[ 2 ] = 0.0056114348193944995;
-      _scalingDeCom[ 3 ] = 0.023680171946334084;
-      _scalingDeCom[ 4 ] = -0.0594344186464569;
-      _scalingDeCom[ 5 ] = -0.0764885990783064;
-      _scalingDeCom[ 6 ] = 0.41700518442169254;
-      _scalingDeCom[ 7 ] = 0.8127236354455423;
-      _scalingDeCom[ 8 ] = 0.3861100668211622;
-      _scalingDeCom[ 9 ] = -0.06737255472196302;
-      _scalingDeCom[ 10 ] = -0.04146493678175915;
-      _scalingDeCom[ 11 ] = 0.016387336463522112;
+    public Coiflet4( ) : base( "Coiflet 4", 24, 2 ) {
+      _scalingDeCom[ 0 ] = -1.7849850030882614e-06;
+      _scalingDeCom[ 1 ] = -3.2596802368833675e-06;
+      _scalingDeCom[ 2 ] = 3.1229875865345646e-05;
+      _scalingDeCom[ 3 ] = 6.233903446100713e-05;
+      _scalingDeCom[ 4 ] = -0.00025997455248771324;
+      _scalingDeCom[ 5 ] = -0.0005890207562443383;
+      _scalingDeCom[ 6 ] = 0.0012665619292989445;
+      _scalingDeCom[ 7 ] = 0.003751436157278457;
+      _scalingDeCom[ 8 ] = -0.00565828668661072;
+      _scalingDeCom[ 9 ] = -0.015211731527946259;
+      _scalingDeCom[ 10 ] = 0.025082261844864097;
+      _scalingDeCom[ 11 ] = 0.03933442712333749;
+      _scalingDeCom[ 12 ] = -0.09622044203398798;
+      _scalingDeCom[ 13 ] = -0.06662747426342504;
+      _scalingDeCom[ 14 ] = 0.4343860564914685;
+      _scalingDeCom[ 15 ] = 0.782238930920499;
+      _scalingDeCom[ 16 ] = 0.41530840703043026;
+      _scalingDeCom[ 17 ] = -0.05607731331675481;
+      _scalingDeCom[ 18 ] = -0.08126669968087875;
+      _scalingDeCom[ 19 ] = 0.026682300156053072;
+      _scalingDeCom[ 20 ] = 0.016068943964776348;
+      _scalingDeCom[ 21 ] = -0.0073461663276420935;
+      _scalingDeCom[ 22 ] = -0.0016294920126017326;
+      _scalingDeCom[ 23 ] = 0.0008923136685823146;
       _buildBaseSystem( ); // build all other from low pass decomposition
-    } // Coiflet2
+    } // Coiflet4
 
   } // class
 

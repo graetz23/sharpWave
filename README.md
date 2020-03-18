@@ -25,6 +25,9 @@ The following functionality is available:
   - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - **Orthonormal Coiflet 1 Wavelet**; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
   - **Orthonormal Coiflet 2 Wavelet**; [class Coiflet2](https://github.com/graetz23/sharpWave/blob/master/Coiflet2.cs); rounding error ~1e-10,
+  - **Orthonormal Coiflet 3 Wavelet**; [class Coiflet3](https://github.com/graetz23/sharpWave/blob/master/Coiflet3.cs); rounding error ~1e-12,
+  - **Orthonormal Coiflet 4 Wavelet**; [class Coiflet4](https://github.com/graetz23/sharpWave/blob/master/Coiflet4.cs); rounding error ~1e-10,
+  - **Orthonormal Coiflet 5 Wavelet**; [class Coiflet5](https://github.com/graetz23/sharpWave/blob/master/Coiflet5.cs); rounding error ~1e-08,
   - **Orthonormal Legendre 1 Wavelet**; [class Legendre1](https://github.com/graetz23/sharpWave/blob/master/Legendre1.cs),
   - **Orthonormal Legendre 2 Wavelet**; [class Legendre2](https://github.com/graetz23/sharpWave/blob/master/Legendre2.cs); not working properly,
   - **Orthonormal Legendre 3 Wavelet**; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly,
@@ -46,6 +49,9 @@ The following functionality is available:
 
 ### 20200318
 - added the _Coiflet 2_ wavelet,
+- added the _Coiflet 3_ wavelet,
+- added the _Coiflet 4_ wavelet,
+- added the _Coiflet 5_ wavelet,
 - added the _Mallat's Battle 23_ wavelet,
 - added the _Cohen Daubechies Feauveau (CDF) 5/3_ wavelet,
 - added the _Cohen Daubechies Feauveau (CDF) 9/7_ wavelet.
