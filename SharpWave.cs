@@ -48,6 +48,7 @@ namespace Program
         // wavelet = new Legendre2( );
         // wavelet = new Legendre3( );
         // wavelet = new Daubechies2( );
+        // wavelet = new Daubechies3( );
         // wavelet = new Symlet2( );
         // wavelet = new CDF53( );
         // wavelet = new CDF97( );

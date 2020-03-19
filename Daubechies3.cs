@@ -30,12 +30,12 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Ingrid Daubechies' wavelet of four coefficients in orthonormal version.
+  /// Ingrid Daubechies' wavelet of six coefficients in orthonormal version.
   ///</summary>
   ///<remarks>
-  /// Christian (graetz23@gmail.com) 10.02.2010 15:42:45
+  /// Christian (graetz23@gmail.com) 15.02.2014 22:23:20
   ///</remarks>
-  public class Daubechies2 : Wavelet {
+  public class Daubechies3 : Wavelet {
 
     ///<summary>
     /// Constructor keeping the orthogonal Daubechies scaling coefficients,
@@ -43,17 +43,22 @@ namespace SharpWave
     /// builds all other coefficients, therewith the orthonormal base.
     ///</summary>
     ///<remarks>
-    /// Christian (graetz23@gmail.com) 10.02.2010 15:42:45
+    /// Christian (graetz23@gmail.com) 25.03.2010 14:03:20
     ///</remarks>
-    public Daubechies2( ) : base( "Daubechies 2", 4, 2 ) {
-      double sqrt02 = Math.Sqrt( 2.0 ); // 1.4142135623730951
-      double sqrt03 = Math.Sqrt( 3.0 ); // 1.7320508075688772
-      _scalingDeCom[ 0 ] = ( ( 1.0 + sqrt03 ) / 4.0 ) / sqrt02; // s0
-      _scalingDeCom[ 1 ] = ( ( 3.0 + sqrt03 ) / 4.0 ) / sqrt02; // s1
-      _scalingDeCom[ 2 ] = ( ( 3.0 - sqrt03 ) / 4.0 ) / sqrt02; // s2
-      _scalingDeCom[ 3 ] = ( ( 1.0 - sqrt03 ) / 4.0 ) / sqrt02; // s3
+    public Daubechies3( ) : base( "Daubechies 3", 6, 2 ) {
+      double sqrt02 = Math.Sqrt( 2.0 ) ; // 1.4142135623730951
+      double sqrt10 = Math.Sqrt( 10.0 );
+      double constA = Math.Sqrt( 5.0 + 2.0 * sqrt10 );
+      _scalingDeCom[ 0 ] = ( 1.0 +  1.0 * sqrt10 + 1.0 * constA ) / 16.0; // h0 = 0.47046720778416373
+      _scalingDeCom[ 1 ] = ( 5.0 +  1.0 * sqrt10 + 3.0 * constA ) / 16.0; // h1 = 1.1411169158314438
+      _scalingDeCom[ 2 ] = ( 10.0 - 2.0 * sqrt10 + 2.0 * constA ) / 16.0; // h2 = 0.6503650005262325
+      _scalingDeCom[ 3 ] = ( 10.0 - 2.0 * sqrt10 - 2.0 * constA ) / 16.0; // h3 = -0.1909344155683274
+      _scalingDeCom[ 4 ] = ( 5.0 +  1.0 * sqrt10 - 3.0 * constA ) / 16.0; // h4 = -0.1208322083103962
+      _scalingDeCom[ 5 ] = ( 1.0 +  1.0 * sqrt10 - 1.0 * constA ) / 16.0; // h5 = 0.049817499736883764
+      for( int i = 0; i < _motherWavelength; i++ )
+        _scalingDeCom[ i ] /= sqrt02;
       _buildBaseSystem( ); // build the orthogonal / orthonormal base system
-    } // Daubechies2
+    } // Daubechies3
 
   } // class
 
