@@ -33,6 +33,7 @@ The following functionality is available:
   - **Orthonormal Legendre 3 Wavelet**; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly,
   - **Orthonormal Daubechies 2 Wavelet**; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
   - **Orthonormal Daubechies 3 Wavelet**; [class Daubechies3](https://github.com/graetz23/sharpWave/blob/master/Daubechies3.cs),
+  - **Orthonormal Daubechies 4 Wavelet**; [class Daubechies4](https://github.com/graetz23/sharpWave/blob/master/Daubechies4.cs); rounding error ~1e-12,
   - **Orthonormal Symlet 2 Wavelet**; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs),
   - **Orthogonal Mallat's Battle 23**; [class Battle23](https://github.com/graetz23/sharpWave/blob/master/Battle23.cs); not working properly,
   - **Orthogonal Cohen Daubechies Feauveau (CDF) 5/3**; [class CDF53](https://github.com/graetz23/sharpWave/blob/master/CDF53.cs); not working properly,
@@ -50,6 +51,7 @@ The following functionality is available:
 
 ### 20200319
 - added the _Daubechies 3_ wavelet,
+- added the _Daubechies 4_ wavelet,
 
 ### 20200318
 - added the _Coiflet 2_ wavelet,

@@ -49,13 +49,19 @@ namespace Program
         // wavelet = new Legendre3( );
         // wavelet = new Daubechies2( );
         // wavelet = new Daubechies3( );
+        // wavelet = new Daubechies4( );
         // wavelet = new Symlet2( );
         // wavelet = new CDF53( );
         // wavelet = new CDF97( );
         // wavelet = new Battle23( );
         // wavelet = new DiscreteMayer( );
 
-        Transform t = new Transform( new FastWaveletTransform( wavelet ) );
+        Algorithm algorithm = null;
+        algorithm = new FastWaveletTransform( wavelet );
+        // algorithm = new WaveletPacketTransform( wavelet );
+        // algorithm = new ShiftingWaveletTransform( wavelet );
+
+        Transform t = new Transform( algorithm );
 
         Console.WriteLine( "SharpWave .. " +
         "doing Fast Wavelet Transform by " + wavelet.TYPE + ":" );
