@@ -50,6 +50,7 @@ namespace Program
         // wavelet = new Daubechies2( );
         // wavelet = new Daubechies3( );
         // wavelet = new Daubechies4( );
+        // wavelet = new Daubechies5( );
         // wavelet = new Symlet2( );
         // wavelet = new CDF53( );
         // wavelet = new CDF97( );
