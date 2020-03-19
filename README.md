@@ -15,11 +15,11 @@ available. Then try:
 
 ### remarks
 The following functionality is available:
-- **1-D, 2-D, and 3-D** orthogonal **transform algorithms**; [class BasicTransform](https://github.com/graetz23/sharpWave/blob/master/BasicTransform.cs):
-  - **Fast Wavelet Transform (FWT)**; [class FastWaveletTransform](https://github.com/graetz23/sharpWave/blob/master/FastWaveletTransform.cs),  
-  - (Fast) **Wavelet Packet Transform (WPT)**; [class WaveletPacketTransform](https://github.com/graetz23/sharpWave/blob/master/WaveletPacketTransform.cs),
-  - Some **Shifting Wavelet Transform (SWT)**; [class ShiftingWaveletTransform](https://github.com/graetz23/sharpWave/blob/master/ShiftingWaveletTransform.cs),
-  - **Discrete Fourier Transform (DFT)**; [class DiscreteFourierTransform](https://github.com/graetz23/sharpWave/blob/master/DiscreteFourierTransform.cs).
+- The **1-D, 2-D, and 3-D orthogonal transform algorithms**; [class BasicTransform](https://github.com/graetz23/sharpWave/blob/master/Algorithm.cs):
+  - a kind of **Fast Wavelet Transform (FWT)**; [class FastWaveletTransform](https://github.com/graetz23/sharpWave/blob/master/FastWaveletTransform.cs),  
+  - a (Fast) **Wavelet Packet Transform (WPT)**; [class WaveletPacketTransform](https://github.com/graetz23/sharpWave/blob/master/WaveletPacketTransform.cs),
+  - some **Shifting Wavelet Transform (SWT)**; [class ShiftingWaveletTransform](https://github.com/graetz23/sharpWave/blob/master/ShiftingWaveletTransform.cs),
+  - and a **Discrete Fourier Transform (DFT)**; [class DiscreteFourierTransform](https://github.com/graetz23/sharpWave/blob/master/DiscreteFourierTransform.cs).
 - Orthogonal and in most cases orthonormal wavelets:
   - **Orthonormal Haar Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Haar Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
