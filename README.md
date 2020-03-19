@@ -24,32 +24,32 @@ The following functionality is available:
   - **Orthonormal Alfred Haar's Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Alfred Haar's Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
   - **Coiflet wavelet family:**
-    - Orthonormal Coiflet 1 Wavelet; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
-    - Orthonormal Coiflet 2 Wavelet; [class Coiflet2](https://github.com/graetz23/sharpWave/blob/master/Coiflet2.cs); reconstrucion error ~1e-10,
-    - Orthonormal Coiflet 3 Wavelet; [class Coiflet3](https://github.com/graetz23/sharpWave/blob/master/Coiflet3.cs); reconstrucion error ~1e-12,
-    - Orthonormal Coiflet 4 Wavelet; [class Coiflet4](https://github.com/graetz23/sharpWave/blob/master/Coiflet4.cs); reconstrucion error ~1e-10,
-    - Orthonormal Coiflet 5 Wavelet; [class Coiflet5](https://github.com/graetz23/sharpWave/blob/master/Coiflet5.cs); reconstrucion error ~1e-08.
-  - **Legendre wavelet family**:
-    - Orthonormal Legendre 1 Wavelet; [class Legendre1](https://github.com/graetz23/sharpWave/blob/master/Legendre1.cs),
-    - Orthonormal Legendre 2 Wavelet; [class Legendre2](https://github.com/graetz23/sharpWave/blob/master/Legendre2.cs); not working properly,
-    - Orthonormal Legendre 3 Wavelet; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly.
-  - **Ingrid Daubechies' wavelet family**:
-    - Orthonormal Daubechies 2 Wavelet; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
-    - Orthonormal Daubechies 3 Wavelet; [class Daubechies3](https://github.com/graetz23/sharpWave/blob/master/Daubechies3.cs),
-    - Orthonormal Daubechies 4 Wavelet; [class Daubechies4](https://github.com/graetz23/sharpWave/blob/master/Daubechies4.cs); reconstrucion error ~1e-12,
-    - Orthonormal Daubechies 5 Wavelet; [class Daubechies5](https://github.com/graetz23/sharpWave/blob/master/Daubechies5.cs); reconstrucion error ~1e-12,
-    - Orthonormal Daubechies 6 Wavelet; [class Daubechies6](https://github.com/graetz23/sharpWave/blob/master/Daubechies6.cs); reconstrucion error ~1e-12,
-    - Orthonormal Daubechies 7 Wavelet; [class Daubechies7](https://github.com/graetz23/sharpWave/blob/master/Daubechies7.cs); reconstrucion error ~1e-12,  
-    - Orthonormal Daubechies 8 Wavelet; [class Daubechies8](https://github.com/graetz23/sharpWave/blob/master/Daubechies8.cs); reconstrucion error ~1e-12,
-    - Orthonormal Daubechies 9 Wavelet; [class Daubechies9](https://github.com/graetz23/sharpWave/blob/master/Daubechies9.cs); reconstrucion error ~1e-10,
-    - Orthonormal Daubechies 10 Wavelet; [class Daubechies10](https://github.com/graetz23/sharpWave/blob/master/Daubechies10.cs); reconstrucion error ~1e-10,      
-    - Orthonormal Daubechies 11 Wavelet; [class Daubechies11](https://github.com/graetz23/sharpWave/blob/master/Daubechies11.cs); reconstrucion error ~1e-12,
-    - Orthonormal Daubechies 12 Wavelet; [class Daubechies12](https://github.com/graetz23/sharpWave/blob/master/Daubechies12.cs); reconstrucion error ~1e-14.
-  - **Symlet wavelet family**:   
-    - Orthonormal Symlet 2 Wavelet; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs).
-  - **Cohen Daubechies Feauveau wavelet family**:
-    - Orthogonal Cohen Daubechies Feauveau (CDF) 5/3; [class CDF53](https://github.com/graetz23/sharpWave/blob/master/CDF53.cs); not working properly,
-    - Orthogonal Cohen Daubechies Feauveau (CDF) 9/7; [class CDF97](https://github.com/graetz23/sharpWave/blob/master/CDF97.cs); not working properly.
+    - Coiflet 1 wavelet; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
+    - Coiflet 2 wavelet; [class Coiflet2](https://github.com/graetz23/sharpWave/blob/master/Coiflet2.cs); reconstrucion error ~1e-10,
+    - Coiflet 3 wavelet; [class Coiflet3](https://github.com/graetz23/sharpWave/blob/master/Coiflet3.cs); reconstrucion error ~1e-12,
+    - Coiflet 4 wavelet; [class Coiflet4](https://github.com/graetz23/sharpWave/blob/master/Coiflet4.cs); reconstrucion error ~1e-10,
+    - Coiflet 5 wavelet; [class Coiflet5](https://github.com/graetz23/sharpWave/blob/master/Coiflet5.cs); reconstrucion error ~1e-08.
+  - **Orthonormal Legendre wavelet family**:
+    - Legendre 1 wavelet; [class Legendre1](https://github.com/graetz23/sharpWave/blob/master/Legendre1.cs),
+    - Legendre 2 wavelet; [class Legendre2](https://github.com/graetz23/sharpWave/blob/master/Legendre2.cs); not working properly,
+    - Legendre 3 wavelet; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly.
+  - **Ingrid Daubechies' _orthonormal_ wavelet family**:
+    - Daubechies 2 wavelet; [class Daubechies2](https://github.com/graetz23/sharpWave/blob/master/Daubechies2.cs),
+    - Daubechies 3 wavelet; [class Daubechies3](https://github.com/graetz23/sharpWave/blob/master/Daubechies3.cs),
+    - Daubechies 4 wavelet; [class Daubechies4](https://github.com/graetz23/sharpWave/blob/master/Daubechies4.cs); reconstrucion error ~1e-12,
+    - Daubechies 5 wavelet; [class Daubechies5](https://github.com/graetz23/sharpWave/blob/master/Daubechies5.cs); reconstrucion error ~1e-12,
+    - Daubechies 6 wavelet; [class Daubechies6](https://github.com/graetz23/sharpWave/blob/master/Daubechies6.cs); reconstrucion error ~1e-12,
+    - Daubechies 7 wavelet; [class Daubechies7](https://github.com/graetz23/sharpWave/blob/master/Daubechies7.cs); reconstrucion error ~1e-12,  
+    - Daubechies 8 wavelet; [class Daubechies8](https://github.com/graetz23/sharpWave/blob/master/Daubechies8.cs); reconstrucion error ~1e-12,
+    - Daubechies 9 wavelet; [class Daubechies9](https://github.com/graetz23/sharpWave/blob/master/Daubechies9.cs); reconstrucion error ~1e-10,
+    - Daubechies 10 wavelet; [class Daubechies10](https://github.com/graetz23/sharpWave/blob/master/Daubechies10.cs); reconstrucion error ~1e-10,      
+    - Daubechies 11 wavelet; [class Daubechies11](https://github.com/graetz23/sharpWave/blob/master/Daubechies11.cs); reconstrucion error ~1e-12,
+    - Daubechies 12 wavelet; [class Daubechies12](https://github.com/graetz23/sharpWave/blob/master/Daubechies12.cs); reconstrucion error ~1e-14.
+  - **Orthonormal Symlet wavelet family**:   
+    - Symlet 2 wavelet; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs).
+  - **Cohen Daubechies Feauveau _orthogonal_ wavelet family**:
+    - Cohen Daubechies Feauveau (CDF) 5/3; [class CDF53](https://github.com/graetz23/sharpWave/blob/master/CDF53.cs); not working properly,
+    - Cohen Daubechies Feauveau (CDF) 9/7; [class CDF97](https://github.com/graetz23/sharpWave/blob/master/CDF97.cs); not working properly.
   - **Orthogonal Mallat's Battle 23**; [class Battle23](https://github.com/graetz23/sharpWave/blob/master/Battle23.cs); not working properly,
   - **Orthogonal Discrete Mayer Wavelet**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/DiscreteMayer.cs); strong reconstrucion error; ~1e-2.
 - Everything was coded using
