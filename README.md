@@ -23,13 +23,13 @@ The following functionality is available:
 - Orthogonal and in most cases orthonormal wavelets:
   - **Orthonormal Alfred Haar's Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Alfred Haar's Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
-  - **Coiflet wavelet family:**
+  - **_Orthonormal_ Coiflet wavelet family:**
     - Coiflet 1 wavelet; [class Coiflet1](https://github.com/graetz23/sharpWave/blob/master/Coiflet1.cs),
     - Coiflet 2 wavelet; [class Coiflet2](https://github.com/graetz23/sharpWave/blob/master/Coiflet2.cs); reconstrucion error ~1e-10,
     - Coiflet 3 wavelet; [class Coiflet3](https://github.com/graetz23/sharpWave/blob/master/Coiflet3.cs); reconstrucion error ~1e-12,
     - Coiflet 4 wavelet; [class Coiflet4](https://github.com/graetz23/sharpWave/blob/master/Coiflet4.cs); reconstrucion error ~1e-10,
     - Coiflet 5 wavelet; [class Coiflet5](https://github.com/graetz23/sharpWave/blob/master/Coiflet5.cs); reconstrucion error ~1e-08.
-  - **Orthonormal Legendre wavelet family**:
+  - **_Orthonormal_ Legendre wavelet family**:
     - Legendre 1 wavelet; [class Legendre1](https://github.com/graetz23/sharpWave/blob/master/Legendre1.cs),
     - Legendre 2 wavelet; [class Legendre2](https://github.com/graetz23/sharpWave/blob/master/Legendre2.cs); not working properly,
     - Legendre 3 wavelet; [class Legendre3](https://github.com/graetz23/sharpWave/blob/master/Legendre3.cs); not working properly.
@@ -52,11 +52,11 @@ The following functionality is available:
     - Cohen Daubechies Feauveau (CDF) 9/7; [class CDF97](https://github.com/graetz23/sharpWave/blob/master/CDF97.cs); not working properly.
   - **Orthogonal Mallat's Battle 23**; [class Battle23](https://github.com/graetz23/sharpWave/blob/master/Battle23.cs); not working properly,
   - **Orthogonal Discrete Mayer Wavelet**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/DiscreteMayer.cs); strong reconstrucion error; ~1e-2.
-- Everything was coded using
-  - [atom](https://atom.io/) editor,
-  - [mono](https://www.mono-project.com/) compiler,
-  - [Gnome](https://www.gnome.org/) windows manager,
-  - and [debian](https://www.debian.org/) GNU/Linux,
+- Everything was coded using:
+  - [**atom**](https://atom.io/) editor,
+  - [**mono**](https://www.mono-project.com/) compiler,
+  - [**Gnome**](https://www.gnome.org/) windows manager,
+  - and [**debian**](https://www.debian.org/) GNU/Linux,
 
 **have fun :-)**
 
