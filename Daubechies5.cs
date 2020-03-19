@@ -30,7 +30,9 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Ingrid Daubechies' wavelet of ten coefficients in orthonormal version.
+  /// Ingrid Daubechies' wavelet of ten coefficients in orthonormal
+  /// version. Already orthonormal coefficients taken from Filip Wasilewski's
+  /// webpage http://wavelets.pybytes.com/wavelet/db5/ Thanks!
   ///</summary>
   ///<remarks>
   /// Christian (graetz23@gmail.com) 26.03.2010 07:35:31

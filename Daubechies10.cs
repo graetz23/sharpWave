@@ -30,13 +30,14 @@ namespace SharpWave
 {
 
   ///<summary>
-  /// Ingrid Daubechies' wavelet of four coefficients in orthonormal version.
-  /// The computation is analytical and has - nearly - no rounding error.
+  /// Ingrid Daubechies' wavelet of twenty coefficients in orthonormal
+  /// version. Already orthonormal coefficients taken from Filip Wasilewski's
+  /// webpage http://wavelets.pybytes.com/wavelet/db10/ Thanks!
   ///</summary>
   ///<remarks>
-  /// Christian (graetz23@gmail.com) 10.02.2010 15:42:45
+  /// Christian (graetz23@gmail.com) 26.03.2010 07:35:31
   ///</remarks>
-  public class Daubechies2 : Wavelet {
+  public class Daubechies10 : Wavelet {
 
     ///<summary>
     /// Constructor keeping the orthogonal Daubechies scaling coefficients,
@@ -44,17 +45,31 @@ namespace SharpWave
     /// builds all other coefficients, therewith the orthonormal base.
     ///</summary>
     ///<remarks>
-    /// Christian (graetz23@gmail.com) 10.02.2010 15:42:45
+    /// Christian (graetz23@gmail.com) 26.03.2010 07:35:31
     ///</remarks>
-    public Daubechies2( ) : base( "Daubechies 2", 4, 2 ) {
-      double sqrt02 = Math.Sqrt( 2.0 ); // 1.4142135623730951
-      double sqrt03 = Math.Sqrt( 3.0 ); // 1.7320508075688772
-      _scalingDeCom[ 0 ] = ( ( 1.0 + sqrt03 ) / 4.0 ) / sqrt02; // s0
-      _scalingDeCom[ 1 ] = ( ( 3.0 + sqrt03 ) / 4.0 ) / sqrt02; // s1
-      _scalingDeCom[ 2 ] = ( ( 3.0 - sqrt03 ) / 4.0 ) / sqrt02; // s2
-      _scalingDeCom[ 3 ] = ( ( 1.0 - sqrt03 ) / 4.0 ) / sqrt02; // s3
+    public Daubechies10( ) : base( "Daubechies 10", 20, 2 ) {
+      _scalingDeCom[ 0 ] = -1.326420300235487e-05;
+      _scalingDeCom[ 1 ] = 9.358867000108985e-05;
+      _scalingDeCom[ 2 ] = -0.0001164668549943862;
+      _scalingDeCom[ 3 ] = -0.0006858566950046825;
+      _scalingDeCom[ 4 ] = 0.00199240529499085;
+      _scalingDeCom[ 5 ] = 0.0013953517469940798;
+      _scalingDeCom[ 6 ] = -0.010733175482979604;
+      _scalingDeCom[ 7 ] = 0.0036065535669883944;
+      _scalingDeCom[ 8 ] = 0.03321267405893324;
+      _scalingDeCom[ 9 ] = -0.02945753682194567;
+      _scalingDeCom[ 10 ] = -0.07139414716586077;
+      _scalingDeCom[ 11 ] = 0.09305736460380659;
+      _scalingDeCom[ 12 ] = 0.12736934033574265;
+      _scalingDeCom[ 13 ] = -0.19594627437659665;
+      _scalingDeCom[ 14 ] = -0.24984642432648865;
+      _scalingDeCom[ 15 ] = 0.2811723436604265;
+      _scalingDeCom[ 16 ] = 0.6884590394525921;
+      _scalingDeCom[ 17 ] = 0.5272011889309198;
+      _scalingDeCom[ 18 ] = 0.18817680007762133;
+      _scalingDeCom[ 19 ] = 0.026670057900950818;
       _buildBaseSystem( ); // build the orthogonal / orthonormal base system
-    } // Daubechies2
+    } // Daubechies10
 
   } // class
 

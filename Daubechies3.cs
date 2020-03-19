@@ -31,6 +31,7 @@ namespace SharpWave
 
   ///<summary>
   /// Ingrid Daubechies' wavelet of six coefficients in orthonormal version.
+  /// The computation is analytical and has - nearly - no rounding error.
   ///</summary>
   ///<remarks>
   /// Christian (graetz23@gmail.com) 15.02.2014 22:23:20
