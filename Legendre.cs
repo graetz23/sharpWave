@@ -30,6 +30,35 @@ namespace SharpWave
 {
 
   ///<summary>
+  /// Orthonormal Legendre wavelet transform of two coefficients based on the
+  /// Legendre polynomial. However the smallest Legendre wavelet is a mirrored
+  /// Haar Wavelet.
+  ///</summary>
+  ///<remarks>
+  /// Christian (graetz23@gmail.com) 08.06.2010 09:32:08
+  ///</remarks>
+  public class Legendre1 : Wavelet {
+
+    ///<summary>
+    /// Constructor calculating analytically the orthogonal Legendre wavelet of
+    /// two coefficients, orthonormalizes them (normed, due to ||*||2 euclidean
+    /// norm), and builds the scaling coefficients, and the orthonormal bases
+    /// afterwards; .
+    ///</summary>
+    ///<remarks>
+    /// Christian (graetz23@gmail.com) 08.06.2010 09:32:08
+    ///</remarks>
+    public Legendre1( ) : base( "Legendre 1", 2, 2 ) {
+      double sqrt02 = Math.Sqrt( 2.0 ); // 1.4142135623730951
+      // these coefficients are already orthonormal
+      _scalingDeCom[ 0 ] = -1.0 / sqrt02; // h0
+      _scalingDeCom[ 1 ] = -1.0 / sqrt02; // h1
+      _buildBaseSystem( ); // build all other from low pass decomposition
+    } // Legendre1
+
+  } // class
+
+  ///<summary>
   /// Orthonormal Legendre wavelet transform of four coefficients based on the
   /// Legendre polynomial; normed, due to ||*||2 euclidean norm..
   ///</summary>
@@ -57,6 +86,40 @@ namespace SharpWave
       _scalingDeCom[ 3 ] = ( -5.0 / 8.0 ) / sqrt02; // s3
       _buildBaseSystem( ); // build all other from low pass decomposition
     } // Legendre2
+
+  } // class
+
+  ///<summary>
+  /// Orthonormal Legendre wavelet transform of six coefficients based on the
+  /// Legendre polynomial. However the smallest Legendre wavelet is a mirrored
+  /// Haar Wavelet.
+  ///</summary>
+  ///<remarks>
+  /// Christian (graetz23@gmail.com) 03.06.2010 22:04:35
+  /// TODO NOT working for odd values; recheck coefficients ..
+  ///</remarks>
+  public class Legendre3 : Wavelet {
+
+    ///<summary>
+    /// Constructor calculating analytically the orthogonal Legendre wavelet of
+    /// six coefficients, orthonormalizes them (normed, due to ||*||2 euclidean
+    /// norm), and builds the scaling coefficients, and the orthonormal bases
+    /// afterwards; .
+    ///</summary>
+    ///<remarks>
+    /// Christian (graetz23@gmail.com) 03.06.2010 22:04:35
+    ///</remarks>
+    public Legendre3( ) : base( "Legendre 3", 6, 2 ) {
+      double sqrt02 = Math.Sqrt( 2.0 ); // 1.4142135623730951
+      // these coefficients are already orthonormal
+      _scalingDeCom[ 0 ] = ( -63.0 / 128.0 ) / sqrt02; // h0
+      _scalingDeCom[ 1 ] = ( -35.0 / 128.0 ) / sqrt02; // h1
+      _scalingDeCom[ 2 ] = ( -30.0 / 128.0 ) / sqrt02; // h2
+      _scalingDeCom[ 3 ] = ( -30.0 / 128.0 ) / sqrt02; // h3
+      _scalingDeCom[ 4 ] = ( -35.0 / 128.0 ) / sqrt02; // h4
+      _scalingDeCom[ 5 ] = ( -63.0 / 128.0 ) / sqrt02; // h5
+      _buildBaseSystem( ); // build all other from low pass decomposition
+    } // Legendre3
 
   } // class
 
