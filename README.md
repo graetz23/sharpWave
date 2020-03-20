@@ -23,7 +23,7 @@ The following functionality is available:
 - Orthogonal and in most cases orthonormal wavelets:
   - **Orthonormal Alfred Haar's Wavelet**; [class Haar1](https://github.com/graetz23/sharpWave/blob/master/Haar1.cs),
   - **Orthogonal Alfred Haar's Wavelet**; [class Haar1Orthogonal](https://github.com/graetz23/sharpWave/blob/master/Haar1Orthogonal.cs),
-  - **_Orthonormal_ Coiflet wavelet family:**; [file Coiflet.cs](https://github.com/graetz23/sharpWave/blob/master/Coiflet.cs)
+  - **_Orthonormal_ Coiflet wavelet family**; [file Coiflet.cs](https://github.com/graetz23/sharpWave/blob/master/Coiflet.cs):
     - Coiflet 1 wavelet,
     - Coiflet 2 wavelet; reconstrucion error ~1e-10,
     - Coiflet 3 wavelet; reconstrucion error ~1e-12,
@@ -45,8 +45,18 @@ The following functionality is available:
     - Daubechies 10 wavelet; reconstrucion error ~1e-10,      
     - Daubechies 11 wavelet; reconstrucion error ~1e-12,
     - Daubechies 12 wavelet; reconstrucion error ~1e-14.
-  - **Orthonormal Symlet wavelet family**:   
-    - Symlet 2 wavelet; [class Symlet2](https://github.com/graetz23/sharpWave/blob/master/Symlet2.cs).
+  - **Orthonormal Symlet wavelet family**; [file Symlet.cs](https://github.com/graetz23/sharpWave/blob/master/Symlet.cs):   
+    - Symlet 2 wavelet,
+    - Symlet 3 wavelet: reconstrucion error ~1e-10,
+    - Symlet 4 wavelet: reconstrucion error ~1e-10,
+    - Symlet 5 wavelet: reconstrucion error ~1e-12,
+    - Symlet 6 wavelet: reconstrucion error ~1e-10,
+    - Symlet 7 wavelet: reconstrucion error ~1e-10,
+    - Symlet 8 wavelet: reconstrucion error ~1e-12,
+    - Symlet 9 wavelet: reconstrucion error ~1e-12,
+    - Symlet 10 wavelet: reconstrucion error ~1e-14,
+    - Symlet 11 wavelet: reconstrucion error ~1e-14,
+    - Symlet 12 wavelet: reconstrucion error ~1e-14,
   - **Cohen Daubechies Feauveau _orthogonal_ wavelet family**; [file CDF.cs](https://github.com/graetz23/sharpWave/blob/master/CDF.cs):
     - Cohen Daubechies Feauveau (CDF) 5/3; not working properly,
     - Cohen Daubechies Feauveau (CDF) 9/7; not working properly.
@@ -63,10 +73,20 @@ The following functionality is available:
 ## ChangeLog
 
 ### 20200320
-- grouping all Coiflet wavelets in file: Coiflet.cs
-- grouping all Daubechies wavelets in file: Daubechies.cs
-- grouping all Legendre wavelets in file: Legendre.cs
-- grouping all CDF wavelets in file: CDF.cs
+- grouping all Coiflet wavelets in file: Coiflet.cs,
+- grouping all Daubechies wavelets in file: Daubechies.cs,
+- grouping all Legendre wavelets in file: Legendre.cs,
+- grouping all CDF wavelets in file: CDF.cs,
+- added the _Symlet 3_ wavelet,
+- added the _Symlet 4_ wavelet,
+- added the _Symlet 5_ wavelet,
+- added the _Symlet 6_ wavelet,
+- added the _Symlet 7_ wavelet,
+- added the _Symlet 8_ wavelet,
+- added the _Symlet 9_ wavelet,
+- added the _Symlet 10_ wavelet,
+- added the _Symlet 11_ wavelet,
+- added the _Symlet 12_ wavelet.
 
 ### 20200319
 - added the _Daubechies 3_ wavelet,
