@@ -1,9 +1,9 @@
 ## sharpWave
 ### A _refactored_ port of [JWave](https://github.com/graetz23/JWave) to C#
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/graetz23/sharpWave)
 ![GitHub Repo stars](https://img.shields.io/github/stars/graetz23/sharpWave?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/graetz23/sharpWave?style=social)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/graetz23/sharpWave)
 
 ### Introduction
 [JWave](https://github.com/graetz23/JWave) was ported to [sharpWave](https://github.com/graetz23/sharpWave) using Microsoft's C# programming language.
