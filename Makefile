@@ -1,42 +1,52 @@
+# @file Makefile
+# @author Christian
 #
-# Makefile C#
+# SharpWave is distributed under the MIT License (MIT); this file is part of.
 #
-# Christian
-# graetz23@gmail.com
-# adapted 24.11.2019
-# updated 14.03.2020
+# Copyright (c) 2020-2021 Christian (graetz23@gmail.com)
 #
-MAIN_FILE = SharpWave
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
+# type to your console for a test run: 
+#
+#   make && make run
+#
 
-# change this to the depth of the project folders
-# if needed, add a preffix for a common project folder
-CSHARP_SOURCE_FILES = $(wildcard */*/*.cs */*.cs *.cs)
+CC=dotnet
 
-# add needed flags to the compiler
-# CSHARP_FLAGS = -optimize+ -w:1 -out:$(EXECUTABLE)
-CSHARP_FLAGS = -w:1 -out:$(EXECUTABLE)
+CFLAGS=
 
-# change to the environment compiler
-CSHARP_COMPILER = mcs
+LDFLAGS=
 
-# if needed, change the executable file
-EXECUTABLE = $(MAIN_FILE).exe
+SRC=src
 
-# if needed, change the remove command according to your system
-RM_CMD = -rm -f $(EXECUTABLE)
+EXECUTABLE=program.exe
 
 all: $(EXECUTABLE)
-
-$(EXECUTABLE): $(CSHARP_SOURCE_FILES)
-	@ $(CSHARP_COMPILER) $(CSHARP_SOURCE_FILES) $(CSHARP_FLAGS)
-	@ echo compiling...
-
-run: all
-	./$(EXECUTABLE)
+	
+$(EXECUTABLE):
+	$(CC) build
+	
 
 clean:
-	@ $(RM_CMD)
+	$(CC) clean
 
-remake:
-	@ $(MAKE) clean
-	@ $(MAKE)
+run:
+	$(CC) run
+
