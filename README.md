@@ -76,6 +76,9 @@ The following functionality is available:
 
 ## ChangeLog
 
+### 20230516
+- changed project to dotnet (.NET core)
+
 ### 20200320
 - grouping all Coiflet wavelets in file: Coiflet.cs,
 - grouping all Daubechies wavelets in file: Daubechies.cs,
