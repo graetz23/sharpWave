@@ -4,7 +4,7 @@
 ///
 /// MIT License
 ///
-/// Copyright (c) 2020 Christian (graetz23@gmail.com)
+/// Copyright (c) 2020-2024 Christian (graetz23@gmail.com)
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ namespace SharpWave
       _scalingDeCom[ 0 ] = sqrt02 * ( sqrt15 - 3.0 ) / 32.0; //  -0.01565572813546454;
       _scalingDeCom[ 1 ] = sqrt02 * ( 1.0 - sqrt15 ) / 32.0; // -0.0727326195128539;
       _scalingDeCom[ 2 ] = sqrt02 * ( 6.0 - 2.0 * sqrt15 ) / 32.0; //  0.38486484686420286;
-      _scalingDeCom[ 3 ] = sqrt02 * ( 2.0 * sqrt15 + 6.0 ) / 32.0; // 0.8525720202122554;
+      _scalingDeCom[ 3 ] = sqrt02 * ( 2.0 * sqrt15 + 6.0 ) / 32.0; // 0.852572020-20242122554;
       _scalingDeCom[ 4 ] = sqrt02 * ( sqrt15 + 13.0 ) / 32.0; // 0.3378976624578092;
       _scalingDeCom[ 5 ] = sqrt02 * ( 9.0 - sqrt15 ) / 32.0; //-0.0727326195128539;
       _buildBaseSystem( ); // build all other from low pass decomposition

@@ -15,7 +15,7 @@ For _some_ how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
 For having a quick example, use _GNU/Linux_ having the _mono compiler_
 available. Then try:
 
-**git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && make run**
+**git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && dotnet build**
 
 ### remarks
 The following functionality is available:
