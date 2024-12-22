@@ -37,7 +37,7 @@ namespace Program
       try {
 
         Wavelet wavelet = null;
-        wavelet = new Haar1Orthogonal( );
+        // wavelet = new Haar1Orthogonal( );
         // wavelet = new Haar1( );
         // wavelet = new Coiflet1( );
         // wavelet = new Coiflet2( );
@@ -69,6 +69,7 @@ namespace Program
         // wavelet = new Symlet10( );
         // wavelet = new Symlet11( );
         // wavelet = new Symlet12( );
+        wavelet = new Symlet16( );
         // wavelet = new CDF53( );
         // wavelet = new CDF97( );
         // wavelet = new Battle23( );

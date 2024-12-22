@@ -455,4 +455,61 @@ namespace SharpWave
 
   } // Symlet12
 
+  ///<summary>
+  /// Already orthonormal coefficients taken from Filip Wasilewski's webpage
+  /// http://wavelets.pybytes.com/wavelet/sym16/ Thanks!
+  ///
+  /// _Supported by M-Colley_ :-)
+  ///</summary>
+  ///<remarks>
+  /// Christian (graetz23@gmail.com) 22.12.2024 12:50:00
+  ///</remarks>
+  public class Symlet16 : Wavelet {
+
+    ///<summary>
+    /// Constructor calculating analytically the orthogonal Symlet wavelet,
+    /// orthonormalizes them (normed, due to ||*||2 euclidean norm), sets
+    // the scaling coefficients, and the orthonormal bases afterwards.
+    ///</summary>
+    ///<remarks>
+    /// Christian (graetz23@gmail.com) 22.12.2024 12:50:00
+    ///</remarks>
+    public Symlet16( ) : base( "Symlet 16", 32, 2) {
+      _scalingDeCom[ 0 ] = -1.0797982104319795e-005; 
+      _scalingDeCom[ 1 ] = -5.3964831793152419e-006; 
+      _scalingDeCom[ 2 ] = 0.00016545679579108483; 
+      _scalingDeCom[ 3 ] = 3.656592483348223e-005; 
+      _scalingDeCom[ 4 ] = -0.0013387206066921965; 
+      _scalingDeCom[ 5 ] = -0.00022211647621176323; 
+      _scalingDeCom[ 6 ] = 0.0069377611308027096; 
+      _scalingDeCom[ 7 ] = 0.001359844742484172; 
+      _scalingDeCom[ 8 ] = -0.024952758046290123; 
+      _scalingDeCom[ 9 ] = -0.0035102750683740089; 
+      _scalingDeCom[ 10 ] = 0.078037852903419913; 
+      _scalingDeCom[ 11 ] = 0.03072113906330156; 
+      _scalingDeCom[ 12 ] = -0.15959219218520598; 
+      _scalingDeCom[ 13 ] = -0.054040601387606135; 
+      _scalingDeCom[ 14 ] = 0.47534280601152273; 
+      _scalingDeCom[ 15 ] = 0.75652498787569711; 
+      _scalingDeCom[ 16 ] = 0.39712293362064416; 
+      _scalingDeCom[ 17 ] = -0.034574228416972504; 
+      _scalingDeCom[ 18 ] = -0.066983049070217779; 
+      _scalingDeCom[ 19 ] = 0.032333091610663785; 
+      _scalingDeCom[ 20 ] = 0.0048692744049046071; 
+      _scalingDeCom[ 21 ] = -0.031051202843553064; 
+      _scalingDeCom[ 22 ] = -0.0031265171722710075; 
+      _scalingDeCom[ 23 ] = 0.012666731659857348; 
+      _scalingDeCom[ 24 ] = 0.00071821197883178923; 
+      _scalingDeCom[ 25 ] = -0.0038809122526038786; 
+      _scalingDeCom[ 26 ] = -0.0001084456223089688; 
+      _scalingDeCom[ 27 ] = 0.00085235471080470952; 
+      _scalingDeCom[ 28 ] = 2.8078582128442894e-005; 
+      _scalingDeCom[ 29 ] = -0.00010943147929529757; 
+      _scalingDeCom[ 30 ] = -3.1135564076219692e-006; 
+      _scalingDeCom[ 31 ] = 6.2300067012207606e-006;
+      _buildBaseSystem( );
+    } // Symlet16
+
+  } // Symlet16
+
 } // namespace
