@@ -12,10 +12,10 @@
 For _some_ how to use it; [JWave's github.io](http://graetz23.github.io/JWave/)
 
 ### building
-For having a quick example, use _GNU/Linux_ having the _mono compiler_
+For having a quick example, use _GNU/Linux_ having the _dotnet core framework and tooling_
 available. Then try:
 
-**git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && make run**
+**git clone https://github.com/graetz23/sharpWave.git && cd sharpWave && dotnet build**
 
 ### remarks
 The following functionality is available:
@@ -61,6 +61,7 @@ The following functionality is available:
     - Symlet 10 wavelet: reconstrucion error ~1e-14,
     - Symlet 11 wavelet: reconstrucion error ~1e-14,
     - Symlet 12 wavelet: reconstrucion error ~1e-14,
+    - Symlet 16 wavelet: reconstrucion error _to be tested_,
   - **Cohen Daubechies Feauveau _orthogonal_ wavelet family**; [file CDF.cs](https://github.com/graetz23/sharpWave/blob/master/CDF.cs):
     - Cohen Daubechies Feauveau (CDF) 5/3; not working properly,
     - Cohen Daubechies Feauveau (CDF) 9/7; not working properly.

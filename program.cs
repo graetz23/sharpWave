@@ -4,7 +4,7 @@
 ///
 /// MIT License
 ///
-/// Copyright (c) 2020 Christian (graetz23@gmail.com)
+/// Copyright (c) 2020-2024 Christian (graetz23@gmail.com)
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ namespace Program
       try {
 
         Wavelet wavelet = null;
-        wavelet = new Haar1Orthogonal( );
+        // wavelet = new Haar1Orthogonal( );
         // wavelet = new Haar1( );
         // wavelet = new Coiflet1( );
         // wavelet = new Coiflet2( );
@@ -69,6 +69,7 @@ namespace Program
         // wavelet = new Symlet10( );
         // wavelet = new Symlet11( );
         // wavelet = new Symlet12( );
+        wavelet = new Symlet16( );
         // wavelet = new CDF53( );
         // wavelet = new CDF97( );
         // wavelet = new Battle23( );
