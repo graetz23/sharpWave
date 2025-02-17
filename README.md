@@ -68,8 +68,10 @@ The following functionality is available:
   - **Orthogonal Mallat's Battle 23**; [class Battle23](https://github.com/graetz23/sharpWave/blob/master/Battle23.cs); not working properly,
   - **Orthogonal Discrete Mayer Wavelet**; [class DiscreteMayer](https://github.com/graetz23/sharpWave/blob/master/DiscreteMayer.cs); strong reconstrucion error; ~1e-2.
 - Everything was coded using:
-  - [**atom**](https://atom.io/) editor,
-  - [**mono**](https://www.mono-project.com/) compiler,
+  - [**vscode**](https://code.visualstudio.com/) editor,
+    - sundowned [**atom**](https://atom.io/) editor,
+  - [**dotnet**](https://dotnet.microsoft.com/) framework,
+    - replaced [**mono**](https://www.mono-project.com/) compiler,
   - [**Gnome**](https://www.gnome.org/) windows manager,
   - and [**debian**](https://www.debian.org/) GNU/Linux,
 
